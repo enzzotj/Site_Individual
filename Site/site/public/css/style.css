@@ -65,6 +65,7 @@ body{
   font-family: 'Roboto', sans-serif;
   font-size: 1.2em;
   font-weight: 500;
+  border-style: none;
 }
 
 .container_conteudo_banner button:hover{
@@ -89,6 +90,7 @@ body{
 
 .container_times_home .container img{
   height: 40px;
+  width: 55px;
 }
 
 .container_times_home .container button{
@@ -102,11 +104,77 @@ body{
 }
 
 .container_participar{
-  background-image: url(../assets/img/fundo_participar.png);
+  background-image: url(../assets/img/banner_participar.png);
   background-size: cover;
   height: 450px;
 }
 
+.container_participar .container{
+  justify-content: space-between;
+  color: #f2f2f2;
+
+}
+.container_participar .container img{
+  height: 450px;
+}
+
 .container_participar_conteudo{
-  
+  height: 348px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-top: 72px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.container_participar_conteudo h2{
+  font-weight: 900;
+  font-size: 1.7em;
+}
+
+.container_participar_conteudo p{
+  font-size: 1.06em;
+}
+
+
+.container_proximos_jogos_home{
+  background-color: #000;
+  height: 100px;
+}
+
+.container_proximos_jogos_home .container{
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+  align-items: center;
+  color: #f2f2f2;
+  justify-content: space-between;
+}
+
+.container_proximos_jogos_home .container hr{
+  height: 50px;
+}
+
+.container_proximos_jogos_home .container h2{
+  font-weight: 900;
+  font-size: 1.55em;
+}
+
+.container_jogos_home{
+  display: flex;
+  align-items: center;
+}
+
+.container_jogos_home img{
+  height: 40px;
+  width: 55px;
+  margin: 0 12px;
+}
+
+.container_jogos_em_breve_home{
+  display: flex;
+}
+
+.container_jogos_home_ao_vivo{
+  display: flex;
 }
