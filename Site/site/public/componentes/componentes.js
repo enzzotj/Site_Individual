@@ -2,6 +2,9 @@ class Header extends HTMLElement{
     connectedCallback() {
         this.innerHTML = `
         <header>
+
+        <div class="container_header">
+        
         <div class="container">
             <div class="container_img_logo">
                 <img src="./assets/icon/logoHome.png" alt="">
@@ -13,6 +16,7 @@ class Header extends HTMLElement{
             <hr>
             <button>LOGIN</button>
             </ul>
+        </div>
         </div>
     </header>
         ` 
