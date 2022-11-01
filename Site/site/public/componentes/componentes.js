@@ -6,7 +6,13 @@ class Header extends HTMLElement{
             <div class="container_img_logo">
                 <img src="./assets/icon/logoHome.png" alt="">
             </div>
-            <div></div>
+            <ul class="container_navegacao">
+            <li><a href="">HOME</a></li>
+            <li><a href="">NOTÍCIAS</a></li>
+            <li><a href="">HORÁRIOS</a></li>
+            <hr>
+            <button>LOGIN</button>
+            </ul>
         </div>
     </header>
         ` 
@@ -22,6 +28,9 @@ class Footer extends HTMLElement{
         <div class="container">
             <div>
                 <img src="./assets/icon/logoHome.png" alt="">
+            </div>
+            <div>
+
             </div>
         </div>
     </footer>

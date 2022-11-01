@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -12,7 +14,7 @@ header{
 }
 
 header .container {
-    width: 1200px;
+    width: 80%;
     height: 100%;
     margin: 0 auto;
     display: flex;
@@ -23,6 +25,51 @@ header .container {
     height: 20px;
 }
 
+
+.container_navegacao{
+    width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.9em;
+    font-weight: 500;   
+    font-family: 'Roboto', sans-serif;
+    color: #f2f2f2;
+}
+.container_navegacao li{
+    display: inline-block;
+}
+
+.container_navegacao a{
+    text-decoration: none;
+    color: #f2f2f2;
+}
+
+.container_navegacao a:hover{
+    color:#C42BC7;
+    transition: 0.3s all;
+}
+
+.container_navegacao button{
+    border-radius: 8px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9em;
+    font-weight: 500;
+    height: 30px;
+    width: 70px;
+    background-color: #7B177D;
+    color: #f2f2f2
+    
+}
+
+.container_navegacao button:hover{
+    background-color: #5E1460;
+    transition: 0.3s all;
+}
+
+.container_navegacao hr{
+    height: 30px;
+}
 footer{
-    background-color: blue;
+    background-color: white;
 }
