@@ -157,12 +157,23 @@ body{
 
 .container_proximos_jogos_home .container h2{
   font-weight: 900;
-  font-size: 1.55em;
+  font-size: 1.5em;
 }
 
 .container_jogos_home{
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
+  width: 22vw;
+}
+
+.container_jogos_home h3{
+  font-size: 1.3em;
+}
+
+.container_jogos_home h3:hover{
+  color:#C42BC7;
+    transition: 0.3s all;
 }
 
 .container_jogos_home img{
@@ -177,4 +188,37 @@ body{
 
 .container_jogos_home_ao_vivo{
   display: flex;
+}
+
+.container_noticia{
+  height: 800px;
+  width: 100%;
+}
+
+.container_noticia .container{
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container_noticia_conteudo{
+  height: 750px;
+  width: 700px;
+  background-color: #3E2B6B;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.container_proximos_jogos_noticia{
+  width: 250px;
+  height: 750px;
+  background-color: yellow  ;
+}
+
+.container_noticia_banner{
+  height: 340px;
+  width: 100%;
+  background-color: blue;
 }

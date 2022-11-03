@@ -77,5 +77,22 @@
     height: 30px;
 }
 footer{
-    background-color: white;
+    background-color: #000;
+    height: 200px;
+}
+footer .container{
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer .container img{
+    height: 22px;
+}
+
+.footer_conteudo{
+    height: 180px;
+    width: 350px;
+    background-color: red;
 }

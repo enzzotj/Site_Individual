@@ -7,10 +7,10 @@ class Header extends HTMLElement{
         
         <div class="container">
             <div class="container_img_logo">
-                <img src="./assets/icon/logoHome.png" alt="">
+                <img onclick="window.location.href='./index.html'" src="./assets/icon/logoHome.png" alt="">
             </div>
             <ul class="container_navegacao">
-            <li><a href="">HOME</a></li>
+            <li><a href="./index.html">HOME</a></li>
             <li><a href="">NOTÍCIAS</a></li>
             <li><a href="">HORÁRIOS</a></li>
             <hr>
@@ -30,12 +30,9 @@ class Footer extends HTMLElement{
         this.innerHTML = `
         <footer>
         <div class="container">
-            <div>
-                <img src="./assets/icon/logoHome.png" alt="">
-            </div>
-            <div>
-
-            </div>
+            <div class="footer_conteudo"></div>
+            <img src="./assets/icon/logoHome.png" alt="">
+            <div class="footer_conteudo"></div>
         </div>
     </footer>
         ` 
