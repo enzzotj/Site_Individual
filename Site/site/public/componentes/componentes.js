@@ -11,7 +11,7 @@ class Header extends HTMLElement{
             </div>
             <ul class="container_navegacao">
             <li><a href="./index.html">HOME</a></li>
-            <li><a href="">NOTÍCIAS</a></li>
+            <li><a href="./index.html#noticia">NOTÍCIAS</a></li>
             <li><a href="">HORÁRIOS</a></li>
             <hr>
             <button>LOGIN</button>

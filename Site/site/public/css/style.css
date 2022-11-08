@@ -157,18 +157,18 @@ body{
 
 .container_proximos_jogos_home .container h2{
   font-weight: 900;
-  font-size: 1.5em;
+  font-size: 1.25em;
 }
 
 .container_jogos_home{
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
-  width: 22vw;
+  justify-content: center;
+  width: 22.8vw;
 }
 
 .container_jogos_home h3{
-  font-size: 1.3em;
+  font-size: 1.05em;
 }
 
 .container_jogos_home h3:hover{
@@ -177,8 +177,8 @@ body{
 }
 
 .container_jogos_home img{
-  height: 40px;
-  width: 55px;
+  height: 35px;
+  width: 50px;
   margin: 0 12px;
 }
 
