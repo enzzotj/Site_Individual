@@ -26,6 +26,7 @@
     justify-content: space-between;
 }
 .container_img_logo img{
+    cursor: pointer;
     height: 20px;
 }
 
@@ -63,7 +64,7 @@
     background-color: #7B177D;
     color: #f2f2f2;
     border-style: none;
-    
+    cursor: pointer;
 }
 
 .container_navegacao button:hover{
@@ -87,6 +88,7 @@ footer .container{
 
 footer .container img{
     height: 22px;
+    cursor: pointer;
 }
 
 .footer_conteudo{
@@ -183,6 +185,7 @@ footer .container img{
     font-size: 0.9em;
     font-weight: 500;   
     font-family: 'Roboto', sans-serif;
+    cursor: pointer;
 }
 
 .footer_img_siganos{
