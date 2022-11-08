@@ -30,9 +30,45 @@ class Footer extends HTMLElement{
         this.innerHTML = `
         <footer>
         <div class="container">
-            <div class="footer_conteudo"></div>
-            <img src="./assets/icon/logoHome.png" alt="">
-            <div class="footer_conteudo"></div>
+            <div class="footer_conteudo">
+                <div class="footer_link_ulteis">
+                    <h2>Links Úteis</h2>
+                    <br>
+                    <ul>
+                        <li><a href="https://www.riotgames.com/pt-br">Riot Games</a></li>
+                        <li><a href="https://www.leagueoflegends.com/pt-br/?_gl=1*9o6ihf*_ga*NDA0NDUxODg3LjE2Njc3MDE3OTg.*_ga_FXBJE5DEDD*MTY2Nzg1OTg3Ny4zLjEuMTY2Nzg2MDQ4OC41OS4wLjA.&_ga=2.263026892.1158637625.1667859877-404451887.1667701798">League of Legends</a></li>
+                        <li><a href="https://signup.leagueoflegends.com/pt-br/signup/redownload?_gl=1*hixsy*_ga*NDA0NDUxODg3LjE2Njc3MDE3OTg.*_ga_FXBJE5DEDD*MTY2Nzg1OTg3Ny4zLjAuMTY2Nzg1OTg3OS41OC4wLjA.&_ga=2.33390078.1158637625.1667859877-404451887.1667701798">Baixar Jogo</a></li>
+                        <li><a href="https://www.leagueofgraphs.com">League of Graphs</a></li>
+                    </ul>
+                </div>
+                <div class="footer_paginas">
+                    <h2>Páginas</h2>
+                    <br>
+                    <ul>
+                        <li><a href="./index.html">Home</a></li>
+                        <li><a href="./index.html#noticia">Notícias</a></li>
+                        <li><a href="">Horários</a></li>
+                        <li><a href="">Login/Cadastrar</a></li>
+                    </ul>
+                </div>
+            </div>
+            <img onclick="window.location.href='./index.html'" src="./assets/icon/logoHome.png" alt="">
+            <div class="footer_conteudo footer_siganos_cadastrar">
+                <div class="footer_siga_nos">
+                    <h2>Faça parte do nosso clan, cadastre-se em nosso sistema:</h2>
+                    <div class="footer_cadastrar">
+                        <input type="email" placeholder="Email">
+                        <button>Cadastrar</button>
+                    </div>
+                </div>
+                <div class="footer_img_siganos">
+                    <h2>Siga-nos em:</h2>
+                    <img onclick="window.location.href='https://www.facebook.com/LeagueofLegendsBrasil/'" src="./assets/img/facebook-logo-redondo.png" alt="">
+                    <img onclick="window.location.href='https://www.instagram.com/leagueoflegendsbrasil/?hl=pt-br'" src="./assets/img/instagram_icon.webp" alt="">
+                    <img onclick="window.location.href='https://www.twitch.tv/cblol'" src="./assets/img/twitch_icon.png" alt="">
+                    <img onclick="window.location.href='https://www.youtube.com/c/leagueoflegends'" src="./assets/img/yout_icon.png" alt="">
+                </div>
+            </div>
         </div>
     </footer>
         ` 
