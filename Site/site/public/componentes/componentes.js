@@ -7,7 +7,7 @@ class Header extends HTMLElement{
         
         <div class="container">
             <div class="container_img_logo">
-                <img onclick="window.location.href='./index.html'" src="./assets/icon/logoHome.png" alt="">
+                <img onclick="window.location.href='./index.html'" src="./assets/icon/logoHome.png" alt="Logo">
             </div>
             <ul class="container_navegacao">
             <li><a href="./index.html">HOME</a></li>
@@ -52,7 +52,7 @@ class Footer extends HTMLElement{
                     </ul>
                 </div>
             </div>
-            <img onclick="window.location.href='./index.html'" src="./assets/icon/logoHome.png" alt="">
+            <img onclick="window.location.href='./index.html'" src="./assets/icon/logoHome.png" alt="Logo">
             <div class="footer_conteudo footer_siganos_cadastrar">
                 <div class="footer_siga_nos">
                     <h2>Faça parte do nosso clan, cadastre-se em nosso sistema:</h2>
@@ -63,10 +63,10 @@ class Footer extends HTMLElement{
                 </div>
                 <div class="footer_img_siganos">
                     <h2>Siga-nos em:</h2>
-                    <img onclick="window.location.href='https://www.facebook.com/LeagueofLegendsBrasil/'" src="./assets/img/facebook-logo-redondo.png" alt="">
-                    <img onclick="window.location.href='https://www.instagram.com/leagueoflegendsbrasil/?hl=pt-br'" src="./assets/img/instagram_icon.webp" alt="">
-                    <img onclick="window.location.href='https://www.twitch.tv/cblol'" src="./assets/img/twitch_icon.png" alt="">
-                    <img onclick="window.location.href='https://www.youtube.com/c/leagueoflegends'" src="./assets/img/yout_icon.png" alt="">
+                    <img onclick="window.location.href='https://www.facebook.com/LeagueofLegendsBrasil/'" src="./assets/img/facebook-logo-redondo.png" alt="Facebool">
+                    <img onclick="window.location.href='https://www.instagram.com/leagueoflegendsbrasil/?hl=pt-br'" src="./assets/img/instagram_icon.webp" alt="Instagram">
+                    <img onclick="window.location.href='https://www.twitch.tv/cblol'" src="./assets/img/twitch_icon.png" alt="Twitch">
+                    <img onclick="window.location.href='https://www.youtube.com/c/leagueoflegends'" src="./assets/img/yout_icon.png" alt="Youtube">
                 </div>
             </div>
         </div>
