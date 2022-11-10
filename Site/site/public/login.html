@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,22 +8,37 @@
     <title>E-Players | Login</title>
     <link rel="icon" href="./assets/icon/logo_nav_site.png">
     <link rel="stylesheet" href="./css/login.css">
-    <link rel="stylesheet" href="./css/componentes.css">
-    <script src="./componentes/componentes.js"></script>
 </head>
+
 <body>
-    <main-header></main-header>
     <main>
-        <div class="container">
-            <div class="test">
-                <p>test</p>
-                <p>test</p>
-                <video autoplay class="bg_video">
+        <div class="fundo_login">
+            <div class="container">
+                <div class="container_logo">
+                    <div onclick="window.location.href='./index.html'" class="logo">
+                        <img src="./assets/icon/logoHome.png" alt="">
+                    </div>
+                </div>
+                <div class="container_total_login">
+                    <div class="container_login">
+                        <img onclick="window.location.href='./index.html'" class="img_volta" src="./assets/img/voltar_login_redondo.png" alt="">
+                        <h3>Sing In</h3>
+                        <input type="email" placeholder="Email">
+                        <input type="password" placeholder="Senha">
+                        <div>
+                            <div class="facebook">
+                                <img src="./assets/img/facebook-icon_branco.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- <video autoplay class="bg_video">
                     <source src="./assets/movie/videoplayback.mp4" type="video/mp4">
-                </video>
+                </video> -->
             </div>
         </div>
     </main>
-    <main-footer></main-footer>
 </body>
+
 </html>

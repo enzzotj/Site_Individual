@@ -6,9 +6,70 @@
   box-sizing: border-box;
 }
 
-.test{
-    margin-top: 70px;
-    height: 71.9vh;
+.fundo_login{
+	background-image: url(../assets/img/riot-x-arcane-lol-tft-valorant-games-265@0@e-pc-4k.jpg);
+	/* background-image: url(../assets/img/4K-LOL-Wallpaper-Desktop.jpg); */
+	/* background-image: url(../assets/img/League-of-Legends-Wallpaper-25.jpg); */
+	/* background-image: url(../assets/img/league-of-legends-Laptop-Wallpaper-4k.jpg); */
+	background-size: cover;
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.container{
+    width: 80%;
+	height: 100%;
+    margin: 0 auto;
+    display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+  }
+
+.container_total_login {
+	width: 100%;
+	height: 90vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.container_login{
+	width: 25vw;
+	height: 70vh;
+	background-color: #fff;
+	padding: 2vh 2vw ;
+}
+
+
+
+.logo{
+	margin-top: 5vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 5vh;
+	width: 200px;
+	background-color: black;
+	border-radius: 20px;
+	cursor: pointer;
+}
+
+.logo img{
+	height: 2vh;
+}
+
+.img_volta{
+	width: auto;
+	height: 4.5vh;
+	cursor: pointer;
+}
+
+.facebook img{
+	height: 20px;
+	background-color: blue;
 }
 
 .bg_video{
@@ -20,6 +81,5 @@
 	width: auto; 
 	height: auto; 
 	z-index: -1000;
-
 	background-size: cover; 
 }

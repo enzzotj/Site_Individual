@@ -38,7 +38,7 @@
 
 
 .container_navegacao{
-    width: 600px;
+    width: 450px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -78,8 +78,15 @@
     transition: 0.3s all;
 }
 
+.container_horario_hr{
+    display: flex;
+    align-items: center;
+}
+
 .container_navegacao hr{
     height: 30px;
+    width: 0;
+    margin: 0 34px;
 }
 footer{
     background-color: #000;
