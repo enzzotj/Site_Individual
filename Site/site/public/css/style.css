@@ -10,12 +10,6 @@ body{
   background-color: #1E1C21;
 }
 
-.container {
-  width: 80%;
-  margin: 0 auto;
-  display: flex;
-}
-
 .banner_home{
   height: 600px;
   background: linear-gradient(90deg, #7A177C 0%, #5A2B6B 18.44%, #3E2B6B 37.29%, #291A43 49.57%, rgba(30, 28, 33, 0.98) 56.32%, #000000 80.99%);
@@ -91,7 +85,7 @@ body{
 
 .container_times_home .container img{
   height: 40px;
-  width: 55px;
+  width: 50px;
 }
 
 .container_times_home .container button{
@@ -170,6 +164,7 @@ body{
 
 .container_jogos_home h3{
   font-size: 1.05em;
+  font-weight: 500;
 }
 
 .container_jogos_home h3:hover{
@@ -178,7 +173,7 @@ body{
 }
 
 .container_jogos_home img{
-  height: 35px;
+  height: 40px;
   width: 50px;
   margin: 0 12px;
 }
@@ -225,7 +220,8 @@ body{
 
 .container_proximos_jogos_dia{
   height: 621px;
-  background-color: #000;
+  background: linear-gradient(180deg, #000000 0%, #2F2F2F 22.82%, #303030 40.14%, #303030 57.12%, #2F2F2F 74.26%, #000000 100%);
+  border-radius: 10px;
 }
 
 .container_noticia_banner{
@@ -292,4 +288,63 @@ body{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background: linear-gradient(180deg, #000000 0%, #2F2F2F 22.82%, #303030 40.14%, #303030 57.12%, #2F2F2F 74.26%, #000000 100%);
+}
+
+.noticia_conteudo h4:hover{
+  color: #C42BC7;
+  transition: 0.3s all;
+}
+
+.container_proximos_jogos_dia{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.proximos_jogos_home img{
+  height: 30px;
+  width: 40px;
+}
+
+.proximos_jogos_home{
+  display: flex;
+  flex-direction: column;
+  width: 240px;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+.proximos_jogos_home h3{
+  font-size: 0.9em;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+}
+
+.proximos_jogos_home h4{
+  font-size: 0.7em;
+  font-weight: 700;
+  font-family: 'Roboto', sans-serif;
+}
+
+.proximos_jogos_home_time{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.proximos_jogos_home_quando{
+  display: flex;
+  justify-content: space-between  ;
+}
+
+.proximos_jogos_home_quando p{
+  font-size: 0.7em;
+  font-family: 'Roboto', sans-serif;
+  color: #a6a7a9;
+  width: 57px;
+  display: flex;
 }

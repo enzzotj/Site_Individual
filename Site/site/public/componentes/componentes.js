@@ -9,12 +9,13 @@ class Header extends HTMLElement{
             <div class="container_img_logo">
                 <img onclick="window.location.href='./index.html'" src="./assets/icon/logoHome.png" alt="Logo">
             </div>
+
             <ul class="container_navegacao">
             <li><a href="./index.html">HOME</a></li>
             <li><a href="./index.html#noticia">NOTÍCIAS</a></li>
-            <li><a href="">HORÁRIOS</a></li>
+            <li><a href="./horario.html">HORÁRIOS</a></li>
             <hr>
-            <button>LOGIN</button>
+            <button onclick="window.location.href='./login.html'">LOGIN</button>
             </ul>
         </div>
         </div>
@@ -47,8 +48,8 @@ class Footer extends HTMLElement{
                     <ul>
                         <li><a href="./index.html">Home</a></li>
                         <li><a href="./index.html#noticia">Notícias</a></li>
-                        <li><a href="">Horários</a></li>
-                        <li><a href="">Login/Cadastrar</a></li>
+                        <li><a href="./horario.html">Horários</a></li>
+                        <li><a href="./login.html">Login/Cadastrar</a></li>
                     </ul>
                 </div>
             </div>
@@ -58,7 +59,7 @@ class Footer extends HTMLElement{
                     <h2>Faça parte do nosso clan, cadastre-se em nosso sistema:</h2>
                     <div class="footer_cadastrar">
                         <input type="email" placeholder="Email">
-                        <button>Cadastrar</button>
+                        <button onclick="window.location.href='./login.html'">Cadastrar</button>
                     </div>
                 </div>
                 <div class="footer_img_siganos">
