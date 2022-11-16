@@ -8,6 +8,7 @@
     <title>E-Players | Login</title>
     <link rel="icon" href="./assets/icon/logo_nav_site.png">
     <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
 </head>
 
 <body>
@@ -21,26 +22,40 @@
                 </div>
                 <div class="container_total_login">
                     <div class="container_login">
-                        <img onclick="window.location.href='./index.html'" class="img_volta" src="./assets/img/voltar_login_redondo.png" alt="">
-                        <h3>Iniciar sessão</h3>
-                        <div>
-                            <input style="margin-bottom: 1.5em;" type="email" placeholder="Email">
-                            <input type="password" placeholder="Senha">
+                        <div class="container_voltar_texto">
+                            <img onclick="window.location.href='./index.html'" class="img_volta"
+                                src="./assets/img/arrow-left-3-128.png" alt="">
+                            <h3>Iniciar Sessão</h3>
+
                         </div>
-                        <div class="img_conectar">
-                            <div class="facebook">
-                                <img style="border-radius: 45px;" src="./assets/img/fb.png" alt="">
+                        <div class="input_login">
+                            <input id="email_input" type="email" placeholder="Email">
+                            <div class="input_senha">
+
+                                <input id="senha_input" type="password" placeholder="Senha">
+                                <img id="olho_img" onclick="mostrar_senha()" src="./assets/img/closed-eyes-256.png"
+                                    alt="">
                             </div>
-                            <div class="google">
-                                <img src="./assets/img/google.png" alt="">
+                            <div class="img_conectar">
+                                <div class="facebook">
+                                    <img style="border-radius: 45px;" src="./assets/img/fb.png" alt="">
+                                </div>
+                                <div class="google">
+                                    <img src="./assets/img/google.png" alt="">
+                                </div>
+                                <div class="apple">
+                                    <img src="./assets/img/apple-white.png" alt="">
+                                </div>
                             </div>
-                            <div class="apple">
-                                <img src="./assets/img/apple-white.png" alt="">
-                            </div>
+                        </div>
+                        <button onclick="entrar()"><img src="./assets/img/seta_cinza.png" alt=""></button>
+                        <div>
+                            <h4>NÃO CONSEGUE FAZER LOGIN?</h4>
+                            <h4 onclick="window.location.href='./cadastro.html'">CRIAR UMA CONTA</h4>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- <video autoplay class="bg_video">
                     <source src="./assets/movie/videoplayback.mp4" type="video/mp4">
                 </video> -->
@@ -50,3 +65,88 @@
 </body>
 
 </html>
+
+<script>
+
+    var olho = false;
+
+    function mostrar_senha() {
+        if (olho == false) {
+            senha_input.type = 'text'
+            olho = true;
+            olho_img.src = "./assets/img/olho_318-932235.webp";
+        } else {
+            senha_input.type = 'password'
+            olho_img.src = "./assets/img/closed-eyes-256.png";
+            olho = false;
+        }
+    }
+
+    function entrar() {
+        alert('test')
+        aguardar();
+
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+
+        if (emailVar == "" || senhaVar == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+
+                    setTimeout(function () {
+                        window.location = "./dashboard/cards.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+
+</script>
