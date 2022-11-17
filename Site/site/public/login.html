@@ -9,6 +9,7 @@
     <link rel="icon" href="./assets/icon/logo_nav_site.png">
     <link rel="stylesheet" href="./css/login.css">
     <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+    <script src="./js/funcoes.js"></script>
 </head>
 
 <body>
@@ -53,12 +54,17 @@
                             <h4>NÃO CONSEGUE FAZER LOGIN?</h4>
                             <h4 onclick="window.location.href='./cadastro.html'">CRIAR UMA CONTA</h4>
                         </div>
+                        <div class="container_carregar">
+
+                            <div id="div_aguardar" class="loading-div">
+                                <img src="./assets/img/loading-gif.gif" id="loading-gif">
+                            </div>
+                            <div id="div_erros_login">
+                        </div>
+        
                     </div>
                 </div>
 
-                <!-- <video autoplay class="bg_video">
-                    <source src="./assets/movie/videoplayback.mp4" type="video/mp4">
-                </video> -->
             </div>
         </div>
     </main>
@@ -83,9 +89,9 @@
     }
 
     function entrar() {
-        alert('test')
+        
+        div_erros_login.style.display = "none";
         aguardar();
-
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
 
@@ -126,7 +132,7 @@
                     sessionStorage.ID_USUARIO = json.id;
 
                     setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
+                        window.location = "./index.html";
                     }, 1000); // apenas para exibir o loading
 
                 });
@@ -134,7 +140,7 @@
             } else {
 
                 console.log("Houve um erro ao tentar realizar o login!");
-
+                div_erros_login.style.display = "";
                 resposta.text().then(texto => {
                     console.error(texto);
                     finalizarAguardar(texto);
@@ -146,6 +152,10 @@
         })
 
         return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
     }
 
 

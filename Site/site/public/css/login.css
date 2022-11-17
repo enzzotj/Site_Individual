@@ -43,7 +43,7 @@
 	background-color: #F9F9F9;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-evenly;
+	justify-content: space-between;
 	align-items: center;
 }
 
@@ -79,6 +79,7 @@
 
 .container_voltar_texto{
 	width: 23vw;
+	margin-top: 4vh;
 }
 
 
@@ -169,3 +170,26 @@
 	margin-left: -2vw;
 	cursor: pointer;
 }
+
+.loading-div {
+	margin: auto;
+	display: none;
+  }
+  
+  .loading-div img {
+	height: 20px;
+	width: 20px;
+  }
+
+  .container_carregar{
+	height: 40px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-family: 'Roboto', sans-serif;
+	color: #848484;
+	font-weight: 700;
+	font-size: 0.8em;
+  }
