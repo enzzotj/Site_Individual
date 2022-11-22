@@ -11,11 +11,18 @@
     <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
     <h3>Olá, <span id="c_usuario">usuário</span>!</h3>
     <h3>Olá, <span id="d_usuario">usuário</span>!</h3>
+    <button onclick="test()">test</button>
 </body>
 </html>
 
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-    c_usuario.innerHTML = sessionStorage.EMAIL_USUARIO;
-    d_usuario.innerHTML = sessionStorage.ID_USUARIO;
+    c_usuario.innerHTML = sessionStorage.MOEDA;
+    alert(sessionStorage.NOME_TIME);
+    alert(sessionStorage.MOEDA);
+    d_usuario.innerHTML = sessionStorage.NOME_TIME;
+    var j_usuario = sessionStorage.ID_TIME;
+    function test(){
+    alert(j_usuario)
+    }
 </script>

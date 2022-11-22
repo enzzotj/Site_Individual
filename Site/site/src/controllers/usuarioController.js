@@ -25,8 +25,16 @@ function listar(req, res) {
 }
 
 function entrar(req, res) {
+    var nomeTime = req.body.nomeTimeServer;
+    var siglaTime = req.body.siglaTimeServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
+    var nome = req.body.nomeServer;
+    var time = req.body.timeServer;
+    var moeda = req.body.moedaServer;
+    var idUsuario = req.body.idUsuarioServer;
+    var idTime = req.body.idTimeServer;
+    var caminhoImgLogo = req.body.caminhoImgLogoServer;
 
     if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
@@ -34,7 +42,7 @@ function entrar(req, res) {
         res.status(400).send("Sua senha está indefinida!");
     } else {
         
-        usuarioModel.entrar(email, senha)
+        usuarioModel.entrar(email, senha, nome, time, moeda, idUsuario, nomeTime, siglaTime, idTime, caminhoImgLogo)
             .then(
                 function (resultado) {
                     console.log(`\nResultados encontrados: ${resultado.length}`);

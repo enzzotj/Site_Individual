@@ -2,18 +2,18 @@
 function validarSessao() {
     // aguardar();
 
-    var email = sessionStorage.EMAIL_USUARIO;
-    var nome = sessionStorage.NOME_USUARIO;
-    var id = sessionStorage.ID_USUARIO
-
-    var b_usuario = document.getElementById("b_usuario");
-    var b_usuario = document.getElementById("c_usuario");
+    // var email = sessionStorage.EMAIL_USUARIO;
+    // var nome = sessionStorage.NOME_USUARIO;
+    // var id = sessionStorage.ID_USUARIO;
+    console.log(listar(sessionStorage.TIME))
+    // var b_usuario = document.getElementById("b_usuario");
+    // var c_usuario = document.getElementById("c_usuario");
 
     if (email != null && nome != null) {
         // window.alert(`Seja bem-vindo, ${nome}!`);
-        b_usuario.innerHTML = nome;
-        c_usuario.innerHTML = email;
-        d_usuario.innerHTML = id;
+        // b_usuario.innerHTML = nome;
+        // c_usuario.innerHTML = email;
+        // d_usuario.innerHTML = id;
         // finalizarAguardar();
     } else {
         window.location = "../login.html";

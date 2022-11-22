@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPlayers | Dados</title>
+    <link rel="stylesheet" href="./css/componentes.css">
+    <link rel="stylesheet" href="./css/dados.css">
+</head>
+
+<body>
+    <header>
+        <div class="container_header">
+            <div class="container">
+                <div class="container_img_logo">
+                    <img onclick="window.location.href='./index.html'" src="./assets/icon/logoHome.png" alt="Logo">
+                </div>
+            <button onclick="window.location.href='./login.html'">LOGIN</button>
+        </div>
+    </header>
+
+    <main>
+        <div class="container_dados">
+            <img class="img_usuario" src="./assets/img/facebook-logo-redondo.png" alt="">
+            <div class="container_dados_fundo">
+                <div class="container_info_usuario">
+                    <div class="container_info_time">
+                        <div 
+                        id="img"></div>
+                        <h4 id="sigla"></h4>
+                    </div>
+                    <h4 id="nome" style="margin-top: 50px; width: 200px; text-align: center;"></h4>
+                    <div class="container_info_moeda">
+                        <h1>O</h1>
+                        <h4>Moeda: <span id="moeda">0</span></h4>
+                    </div>
+                </div>
+                <div>
+
+                </div>
+                
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
+
+<script>
+
+    nome.innerHTML = sessionStorage.NOME_USUARIO;
+    moeda.innerHTML = sessionStorage.MOEDA;
+    sigla.innerHTML = sessionStorage.SIGLA_TIME;
+    img.innerHTML = `<img src="${sessionStorage.IMG_LOGO}" alt="">`;
+</script>

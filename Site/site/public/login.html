@@ -126,13 +126,19 @@
                     console.log(json);
                     console.log(JSON.stringify(json));
 
+                    sessionStorage.NOME_TIME = json.nomeTime;
+                    sessionStorage.SIGLA_TIME = json.siglaTime;
+                    sessionStorage.IMG_LOGO = json.caminhoImgLogo;
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
+                    sessionStorage.MOEDA = json.moeda;
                     sessionStorage.TIME = json.fkTime;
+                    sessionStorage.ID_TIME = json.idTime;
+                    sessionStorage.ID_USUARIO = json.idUsuario;
+                    
 
                     setTimeout(function () {
-                        window.location = "./test.html";
+                        window.location = "./dados.html";
                     }, 1000); // apenas para exibir o loading
 
                 });
