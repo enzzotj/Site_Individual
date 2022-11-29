@@ -9,6 +9,11 @@
 body{
   background-color: #1E1C21;
 }
+.div_img_logo{
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
 
 .banner_home{
   height: 600px;

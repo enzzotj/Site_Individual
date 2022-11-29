@@ -14,7 +14,7 @@ class Header extends HTMLElement{
             <li><a href="./index.html">HOME</a></li>
             <li><a href="./index.html#noticia">NOTÍCIAS</a></li>
             <div class="container_horario_hr">
-            <li><a href="./horario.html">HORÁRIOS</a></li>
+            <li><a href="https://lolesports.com/schedule?leagues=worlds,cblol-brazil">HORÁRIOS</a></li>
             <hr>
             <button onclick="window.location.href='./login.html'">LOGIN</button>
             </div>
@@ -50,7 +50,7 @@ class Footer extends HTMLElement{
                     <ul>
                         <li><a href="./index.html">Home</a></li>
                         <li><a href="./index.html#noticia">Notícias</a></li>
-                        <li><a href="./horario.html">Horários</a></li>
+                        <li><a href="https://lolesports.com/schedule?leagues=worlds,cblol-brazil">Horários</a></li>
                         <li><a href="./login.html">Login/Cadastrar</a></li>
                     </ul>
                 </div>

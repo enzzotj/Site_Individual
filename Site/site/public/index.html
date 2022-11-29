@@ -31,13 +31,15 @@
 
         <div class="container_times_home">
             <div class="container">
-                <button><</button>
-                <img src="./assets/img/LOUD_logo.png" alt="LOUD">
-                <img src="./assets/img/logo_pain.png" alt="PAIN">
-                <img src="./assets/img/RED_logo.png" alt="RED">
-                <img src="./assets/img/INTZ_Logo.png" alt="INTZ">
-                <img src="./assets/img/flamengo-esports-logo.webp" alt="Flamengo">
-                <button>></button>
+                <button id="voltar" onclick="voltar_img()"><</button>
+                <div class="div_img_logo" id="img_logo">
+                    <img src="./assets/img/LOUD_logo.png" alt="LOUD">
+                    <img src="./assets/img/logo_pain.png" alt="PAIN">
+                    <img src="./assets/img/RED_logo.png" alt="RED">
+                    <img src="./assets/img/INTZ_Logo.png" alt="INTZ">
+                    <img src="./assets/img/flamengo-esports-logo.webp" alt="Flamengo">
+                </div>
+                <button id="avancar" onclick="avancar_img()">></button>
             </div>
         </div>
 
@@ -307,3 +309,38 @@
 
 </body>
 </html>
+<style>
+
+</style>
+
+<script>
+
+    var contador_time = 0;
+    var lista_time = ['LOUD_logo.png', 'logo_pain.png', 'RED_logo.png', 'INTZ_Logo.png', 'flamengo-esports-logo.webp', 'Rensga_Esportslogo_square.webp', 'Kabum.png', 'libert.png', 'Furia_Esports_logo.png', 'Netshoes_Minerslogo_square.webp'];
+
+    function voltar_img(){
+        if(contador_time > 0){
+            contador_time --;
+            img_logo.innerHTML = `
+            <img src="./assets/img/${lista_time[contador_time]}">
+            <img src="./assets/img/${lista_time[contador_time + 1]}">
+            <img src="./assets/img/${lista_time[contador_time + 2]}">
+            <img src="./assets/img/${lista_time[contador_time + 3]}">
+            <img src="./assets/img/${lista_time[contador_time + 4]}">
+            `     
+        }
+    }
+
+    function avancar_img(){
+        if(contador_time < lista_time.length - 5){
+            contador_time ++;
+            img_logo.innerHTML = `
+            <img src="./assets/img/${lista_time[contador_time]}">
+            <img src="./assets/img/${lista_time[contador_time + 1]}">
+            <img src="./assets/img/${lista_time[contador_time + 2]}">
+            <img src="./assets/img/${lista_time[contador_time + 3]}">
+            <img src="./assets/img/${lista_time[contador_time + 4]}">
+            `     
+        }
+    }
+</script>
