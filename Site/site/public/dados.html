@@ -67,13 +67,29 @@
                                     <p style="justify-content:flex-end;">28/11/22</p>
                                 </div>
                             </div>
-                            <button onclick="test()" class="button_votar">VOTE</button>
+                            <button onclick="" class="button_votar">VOTE</button>
                     </div>
                     <div class="banner_dados">
+                        <div class="text_conteudo">
 
+                            <h4>Qual a maior torcida?</h4>
+                            <p>Lorem Ipsum é simplesmente uma simulação de texto da
+                                indústria tipográfica e de impressos, e vem sendo utilizado
+                                desde o século XVI</p>
+                        </div>
+                        <img class="img_cont" src="./assets/img/graficos.png" alt="">
+                        <button onclick="" class="button_votar">GRÁFICOS</button>
                     </div>
                     <div class="banner_dados">
+                        <div class="text_conteudo">
 
+                            <h4>Você sabe a Reposta?</h4>
+                            <p>Lorem Ipsum é simplesmente uma simulação de texto da
+                                indústria tipográfica e de impressos, e vem sendo utilizado
+                                desde o século XVI</p>
+                        </div>
+                        <img class="img_cont" src="./assets/img/quest.png" alt="">
+                        <button onclick="" class="button_votar">QUESTION</button>
                     </div>
                 </div>
                 
@@ -91,25 +107,5 @@
     sigla.innerHTML = sessionStorage.SIGLA_TIME;
     img.innerHTML = `<img src="${sessionStorage.IMG_LOGO}" alt="">`;
 
-    function test(){
-        swal({
-  title: 'Você está certo disso?',
-  text: "Esta pergunta vale um milhão de reais!",
-  type: 'warning',
-  showCancelButton: true,
-  confirmButtonColor: '#3085d6',
-  cancelButtonColor: '#d33',
-  confirmButtonText: 'Sim, tenho certeza!',
-  cancelButtonText: 'Melhor eu parar...'
-  }).then((result) => {
-    if (result.value) {
-      swal(
-        'Parabéns!',
-        'Você acertou e ganhou um milhão de reais!',
-        'success'
-      )
-    }
-  })
-    }
 </script>
 

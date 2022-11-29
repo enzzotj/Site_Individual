@@ -51,6 +51,7 @@ header .img_sair{
 .container_info_usuario img{
   height: 40px;
   width: 40px;
+  margin-right: 2vw;
 }
 
 .container_info_usuario{
@@ -187,4 +188,8 @@ header .img_sair{
     border-color: #7A177C;
     border-style: solid;
     margin-bottom: 1.5vh;
+}
+
+.img_cont{
+  width: 10vw;
 }
