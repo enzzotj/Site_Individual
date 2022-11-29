@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./css/dados.css">
 </head>
 
-<body>
+<body onload="atualizarVoto()">
     <header>
         <div class="container_header">
             <div class="container">
@@ -51,12 +51,12 @@
     
                                     <h3>ITZ</h3>
                                     <div class="dados_votos">
-                                        <span class="placar_votos">0</span>
+                                        <span id="time1" class="placar_votos">0</span>
                                         <img src="./assets/img/INTZ_Logo.png" alt="INTZ">
                                     </div>
                                     <h4>VS</h4>
                                     <div class="dados_votos">
-                                        <span class="placar_votos">0</span>
+                                        <span id="time2" class="placar_votos">0</span>
                                         <img src="./assets/img/flamengo-esports-logo.webp" alt="Flamengo">
                                     </div>
                                     <h3 style="justify-content:flex-end ;">FLA</h3>
@@ -67,7 +67,7 @@
                                     <p style="justify-content:flex-end;">28/11/22</p>
                                 </div>
                             </div>
-                            <button onclick="" class="button_votar">VOTE</button>
+                            <button onclick="votar_em_um_time()" class="button_votar">VOTE</button>
                     </div>
                     <div class="banner_dados">
                         <div class="text_conteudo">
@@ -77,7 +77,7 @@
                                 indústria tipográfica e de impressos, e vem sendo utilizado
                                 desde o século XVI</p>
                         </div>
-                        <img class="img_cont" src="./assets/img/graficos.png" alt="">
+                        <img style="width: 12vw;" src="./assets/img/graficos.png" alt="">
                         <button onclick="" class="button_votar">GRÁFICOS</button>
                     </div>
                     <div class="banner_dados">
@@ -88,7 +88,7 @@
                                 indústria tipográfica e de impressos, e vem sendo utilizado
                                 desde o século XVI</p>
                         </div>
-                        <img class="img_cont" src="./assets/img/quest.png" alt="">
+                        <img style="height: 14vh;" src="./assets/img/quest.png" alt="">
                         <button onclick="" class="button_votar">QUESTION</button>
                     </div>
                 </div>
@@ -106,6 +106,138 @@
     moeda.innerHTML = sessionStorage.MOEDA;
     sigla.innerHTML = sessionStorage.SIGLA_TIME;
     img.innerHTML = `<img src="${sessionStorage.IMG_LOGO}" alt="">`;
+    var idPartida = 1;
+
+    function atualizarVoto(){
+        fetch(`/usuarios/listarVotos`)
+            .then(resposta => {
+
+                if (resposta.ok) {
+                    resposta.json().then(resposta => {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                        time2.innerHTML = JSON.stringify(resposta[0].b);
+                        time1.innerHTML = JSON.stringify(resposta[0].a);
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
+            });
+
+    }
+
+    function cadastrarVoto1() {
+        aguardar();
+        
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var idUsuarioVar = sessionStorage.ID_USUARIO;
+        var votoTime1Var = 1;
+        var votoTime2Var = 0;
+
+        if (idUsuarioVar == "" || votoTime1Var == "" || votoTime2Var == "") {
+            alert("Erro preencha todos os campos em branco");
+            finalizarAguardar();
+            return false;
+
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrarVoto", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                idUsuarioServer: idUsuarioVar,
+                votoTime1Server: votoTime1Var,
+                votoTime2Server: votoTime2Var
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+
+                setTimeout(() => {
+                    window.location = "./dados.html";
+                }, "1000")
+                
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+
+        return false;
+    }
+
+    function cadastrarVoto2() {
+        aguardar();
+        
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var idUsuarioVar = sessionStorage.ID_USUARIO;
+        var votoTime1Var = 0;
+        var votoTime2Var = 1;
+
+        if (idUsuarioVar == "" || votoTime1Var == "" || votoTime2Var == "") {
+            alert("Erro preencha todos os campos em branco");
+            finalizarAguardar();
+            return false;
+
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrarVoto", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                idUsuarioServer: idUsuarioVar,
+                votoTime1Server: votoTime1Var,
+                votoTime2Server: votoTime2Var
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+
+                setTimeout(() => {
+                    window.location = "./dados.html";
+                }, "1000")
+                
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
 
 </script>
 

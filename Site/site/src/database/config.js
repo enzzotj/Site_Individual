@@ -3,19 +3,19 @@ var sql = require('mssql');
 
 
 // CONEXÃO DO MYSQL WORKBENCH (LOCAL)
-// var mySqlConfig = {
-//     host: "localhost",
-//     database: "ePlayers",
-//     user: "aluno",
-//     password: "sptech",
-// };
-
 var mySqlConfig = {
     host: "localhost",
     database: "ePlayers",
-    user: "root",
-    password: "enzzo123"
+    user: "aluno",
+    password: "sptech",
 };
+
+// var mySqlConfig = {
+//     host: "localhost",
+//     database: "ePlayers",
+//     user: "root",
+//     password: "enzzo123"
+// };
 
 function executar(instrucao) {
     // VERIFICA A VARIÁVEL DE AMBIENTE SETADA EM app.js

@@ -7,8 +7,9 @@ function testar(req, res) {
     res.json("ESTAMOS FUNCIONANDO!");
 }
 
-function listar(req, res) {
-    usuarioModel.listar()
+function listarVotos(req, res) {
+
+    usuarioModel.listarVotos()
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -105,9 +106,45 @@ function cadastrar(req, res) {
     }
 }
 
+function cadastrarVoto(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var idUsuario = req.body.idUsuarioServer;
+    var votoTime1 = req.body.votoTime1Server;
+    var votoTime2 = req.body.votoTime2Server;
+    
+
+    // Faça as validações dos valores
+    if (idUsuario == undefined) {
+        res.status(400).send("Seu nome está undefined!");
+    } else if (votoTime1 == undefined) {
+        res.status(400).send("Seu email está undefined!");
+    } else if (votoTime2 == undefined) {
+        res.status(400).send("Sua senha está undefined!");
+    } else {
+        
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.cadastrar(idUsuario, votoTime1, votoTime2)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
 module.exports = {
     entrar,
     cadastrar,
-    listar,
+    cadastrarVoto,
+    listarVotos,
     testar
 }

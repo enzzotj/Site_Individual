@@ -86,13 +86,13 @@ header .img_sair{
 }
 
 .container_banner{
-  height: 47vh;
+  height: 50vh;
   display: flex;
   justify-content: space-around;
 }
 
 .proximos_jogos_home img{
-  height: 4.5vh;
+  height: 5vh;
   width: 3vw;
 }
 
@@ -105,7 +105,7 @@ header .img_sair{
 
 
 .proximos_jogos_home h3{
-  font-size: 1.5em;
+  font-size: 1.2em;
   font-weight: 500;
   font-family: 'Roboto', sans-serif;
   display: flex;
@@ -162,12 +162,12 @@ header .img_sair{
 }
 
 .text_conteudo h4{
-  font-size: 1.5em;
-  margin-bottom: 2vh;
+  font-size: 1.3em;
+  margin-bottom: 1.3vh;
 }
 
 .text_conteudo p{
-  font-size: 0.9em;
+  font-size: 0.8em;
 }
 
 .dados_votos{
@@ -178,8 +178,8 @@ header .img_sair{
 
 .placar_votos{
     background-color: #fff;
-    width: 2vw;
-    height: 4vh;
+    width: 3vw;
+    height: 5vh;
     border-radius: 45px;
     display: flex;
     justify-content: center;
