@@ -141,7 +141,7 @@ header .img_sair{
 
 .button_votar{
   height: 4vh;
-  width: 8.5vw;
+  width: 7vw;
   background-color: #7A177C;
   border-style: none;
   border-radius: 10px;
@@ -192,4 +192,9 @@ header .img_sair{
 
 .img_cont{
   width: 10vw;
+}
+
+.graficos{
+  height: 50vh !important;
+  width: 100%;
 }

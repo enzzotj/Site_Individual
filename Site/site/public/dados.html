@@ -10,15 +10,15 @@
     <link rel="stylesheet" href="./css/dados.css">
 </head>
 
-<body onload="atualizarVoto()">
+<body onload=" atualizarVoto(), verificarVotoPergunta()">
     <header>
         <div class="container_header">
             <div class="container">
                 <div class="container_img_logo">
                     <img style="cursor:default;" src="./assets/icon/logoHome.png" alt="Logo">
                 </div>
-            <img class="img_sair" src="./assets/img/logof.png" onclick="window.location.href='./index.html'"></img>
-        </div>
+                <img class="img_sair" src="./assets/img/logof.png" onclick="window.location.href='./index.html'"></img>
+            </div>
     </header>
 
     <main>
@@ -27,8 +27,7 @@
             <div class="container_dados_fundo">
                 <div class="container_info_usuario">
                     <div class="container_info_time">
-                        <div 
-                        id="img"></div>
+                        <div id="img"></div>
                         <h4 id="sigla"></h4>
                     </div>
                     <h4 id="nome" style="margin-top: 10px; width: 200px; text-align: center;"></h4>
@@ -46,28 +45,31 @@
                                 indústria tipográfica e de impressos, e vem sendo utilizado
                                 desde o século XVI</p>
                         </div>
-                            <div class="proximos_jogos_home">
-                                <div class="proximos_jogos_home_time">
-    
-                                    <h3>ITZ</h3>
-                                    <div class="dados_votos">
-                                        <span id="time1" class="placar_votos">0</span>
-                                        <img src="./assets/img/INTZ_Logo.png" alt="INTZ">
-                                    </div>
-                                    <h4>VS</h4>
-                                    <div class="dados_votos">
-                                        <span id="time2" class="placar_votos">0</span>
-                                        <img src="./assets/img/flamengo-esports-logo.webp" alt="Flamengo">
-                                    </div>
-                                    <h3 style="justify-content:flex-end ;">FLA</h3>
+                        <div class="proximos_jogos_home">
+                            <div class="proximos_jogos_home_time">
+
+                                <h3>ITZ</h3>
+                                <div class="dados_votos">
+                                    <span id="time1" class="placar_votos">0</span>
+                                    <img src="./assets/img/INTZ_Logo.png" alt="INTZ">
                                 </div>
-                                <div class="proximos_jogos_home_quando">
-                                    <p>CBLOL</p>
-                                    <p style="justify-content: center;">17:30</p>
-                                    <p style="justify-content:flex-end;">28/11/22</p>
+                                <h4>VS</h4>
+                                <div class="dados_votos">
+                                    <span id="time2" class="placar_votos">0</span>
+                                    <img src="./assets/img/flamengo-esports-logo.webp" alt="Flamengo">
                                 </div>
+                                <h3 style="justify-content:flex-end ;">FLA</h3>
                             </div>
-                            <button onclick="votar_em_um_time()" class="button_votar">VOTE</button>
+                            <div class="proximos_jogos_home_quando">
+                                <p>CBLOL</p>
+                                <p style="justify-content: center;">17:30</p>
+                                <p style="justify-content:flex-end;">28/11/22</p>
+                            </div>
+                        </div>
+                        <div id="botaoVotar" style="display: flex; justify-content: space-between; width: 100%;">
+                            <button onclick="cadastrarVoto1()" class="button_votar">ITZ</button>
+            <button onclick="cadastrarVoto2()" class="button_votar">FLA</button>
+                        </div>
                     </div>
                     <div class="banner_dados">
                         <div class="text_conteudo">
@@ -78,7 +80,7 @@
                                 desde o século XVI</p>
                         </div>
                         <img style="width: 12vw;" src="./assets/img/graficos.png" alt="">
-                        <button onclick="" class="button_votar">GRÁFICOS</button>
+                        <button onclick="window.location.href='./dashbord.html'" class="button_votar">GRÁFICOS</button>
                     </div>
                     <div class="banner_dados">
                         <div class="text_conteudo">
@@ -89,16 +91,20 @@
                                 desde o século XVI</p>
                         </div>
                         <img style="height: 14vh;" src="./assets/img/quest.png" alt="">
-                        <button onclick="" class="button_votar">QUESTION</button>
+                        <div id="botaoPergunta">
+
+                            <button onclick="" class="button_votar">QUESTION</button>
+                        </div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </main>
 </body>
 
 </html>
+
 
 <script>
 
@@ -107,8 +113,20 @@
     sigla.innerHTML = sessionStorage.SIGLA_TIME;
     img.innerHTML = `<img src="${sessionStorage.IMG_LOGO}" alt="">`;
     var idPartida = 1;
+    var idUsuario = sessionStorage.ID_USUARIO;
+    var pergunta = sessionStorage.PERGUNTA;
+    var voto = sessionStorage.VOTO;
 
-    function atualizarVoto(){
+    function verificarVotoPergunta() {
+        if (voto == 1) {
+            botaoVotar.innerHTML = '';
+        }
+        if (pergunta == 1) {
+            botaoPergunta.innerHTML = '';
+        }
+    }
+
+    function atualizarVoto() {
         fetch(`/usuarios/listarVotos`)
             .then(resposta => {
 
@@ -116,8 +134,10 @@
                     resposta.json().then(resposta => {
                         console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
 
-                        time2.innerHTML = JSON.stringify(resposta[0].b);
-                        time1.innerHTML = JSON.stringify(resposta[0].a);
+                        var vt1 = JSON.stringify(resposta[0].a);
+                        var vt2 = JSON.stringify(resposta[0].b);
+                        time1.innerHTML = vt1.replace(/"/g, "");
+                        time2.innerHTML = vt2.replace(/"/g, "");
                     });
                 } else {
                     console.error('Nenhum dado encontrado ou erro na API');
@@ -130,26 +150,22 @@
     }
 
     function cadastrarVoto1() {
-        aguardar();
-        
+        alert(`Parabens você votou na Vitoria da INTZ`)
+
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
-        var idUsuarioVar = sessionStorage.ID_USUARIO;
+        var idUsuarioVar = idUsuario;
         var votoTime1Var = 1;
         var votoTime2Var = 0;
 
-        if (idUsuarioVar == "" || votoTime1Var == "" || votoTime2Var == "") {
+        if (idUsuarioVar == "") {
             alert("Erro preencha todos os campos em branco");
-            finalizarAguardar();
             return false;
 
         }
-        else {
-            setInterval(sumirMensagem, 5000)
-        }
 
         // Enviando o valor da nova input
-        fetch("/usuarios/cadastrarVoto", {
+        fetch("/usuarios/cadastraVoto", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -166,43 +182,37 @@
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-
+                atualizarVt();
                 setTimeout(() => {
                     window.location = "./dados.html";
                 }, "1000")
-                
+
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
-            finalizarAguardar();
         });
 
         return false;
     }
 
     function cadastrarVoto2() {
-        aguardar();
-        
+        alert(`Parabens você votou na Vitoria do Flamengo`)
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
         var idUsuarioVar = sessionStorage.ID_USUARIO;
         var votoTime1Var = 0;
         var votoTime2Var = 1;
 
-        if (idUsuarioVar == "" || votoTime1Var == "" || votoTime2Var == "") {
+        if (idUsuarioVar == "") {
             alert("Erro preencha todos os campos em branco");
-            finalizarAguardar();
             return false;
 
         }
-        else {
-            setInterval(sumirMensagem, 5000)
-        }
 
         // Enviando o valor da nova input
-        fetch("/usuarios/cadastrarVoto", {
+        fetch("/usuarios/cadastraVoto", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -219,25 +229,41 @@
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-
+                atualizarVt();
                 setTimeout(() => {
                     window.location = "./dados.html";
                 }, "1000")
-                
+
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
-            finalizarAguardar();
         });
 
         return false;
     }
 
-    function sumirMensagem() {
-        cardErro.style.display = "none"
+
+    function atualizarVt() {
+        fetch(`/usuarios/atualizarVoto/${idUsuario}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                window.location = "./dados.html";
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
     }
 
-</script>
 
+</script>

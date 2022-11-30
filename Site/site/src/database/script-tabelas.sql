@@ -13,6 +13,8 @@ CREATE TABLE usuario(
     nome VARCHAR(45),
     email VARCHAR(45),
     senha VARCHAR(45),
+    pergunta TINYINT,
+    voto TINYINT,
 	moeda INT,
     fkTime INT,
     FOREIGN KEY (fkTime) REFERENCES time(idTime),

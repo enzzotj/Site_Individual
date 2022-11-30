@@ -15,17 +15,25 @@ router.get("/listarVotos", function (req, res) {
     usuarioController.listarVotos(req, res);
 });
 
+router.get("/listarTimes", function (req, res) {
+    usuarioController.listarTimes(req, res);
+});
+
 //Recebendo os dados do html e direcionando para a função cadastrar de usuarioController.js
 router.post("/cadastrar", function (req, res) {
     usuarioController.cadastrar(req, res);
 })
 
-router.post("/cadastrarVoto", function (req, res) {
-    usuarioController.cadastrarVoto(req, res);
+router.post("/cadastraVoto", function (req, res) {
+    usuarioController.cadastraVoto(req, res);
 })
 
 router.post("/autenticar", function (req, res) {
     usuarioController.entrar(req, res);
+});
+
+router.put("/atualizarVoto/:idUsuario", function (req, res) {
+    usuarioController.atualizarVoto(req, res);
 });
 
 module.exports = router;

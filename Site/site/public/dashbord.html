@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPlayers | Dados</title>
+    <link rel="stylesheet" href="./css/componentes.css">
+    <link rel="stylesheet" href="./css/dados.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body onload="times()">
+    <header>
+        <div class="container_header">
+            <div class="container">
+                <div class="container_img_logo">
+                    <img style="cursor:default;" src="./assets/icon/logoHome.png" alt="Logo">
+                </div>
+                <img class="img_sair" src="./assets/img/logof.png" onclick="window.location.href='./index.html'"></img>
+            </div>
+    </header>
+
+    <main>
+        <div class="container_dados">
+            <img class="img_usuario" src="./assets/img/masterIcon.png" alt="">
+            <div class="container_dados_fundo">
+                <div class="container_info_usuario">
+                    <div class="container_info_time">
+                        <img onclick="window.location.href='./dados.html'" src="./assets/img/voltar_login.png">
+                        <div id="img"></div>
+                        <h4 id="sigla"></h4>
+                    </div>
+                    <h4 id="nome" style="margin-top: 10px; width: 200px; text-align: center;"></h4>
+                    <div class="container_info_moeda">
+                        <img src="./assets/img/Desenho-Moedas-Dinheiro-Bitcoin-PNG.png" alt="">
+                        <span id="moeda">0</span>
+                    </div>
+                </div>
+                <div class="container_banner">
+                    <canvas class="graficos" id="graficoTimes"></canvas>
+                </div>
+                <button onclick="test()">a</button>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
+
+<script>
+
+nome.innerHTML = sessionStorage.NOME_USUARIO;
+moeda.innerHTML = sessionStorage.MOEDA;
+    sigla.innerHTML = sessionStorage.SIGLA_TIME;
+    img.innerHTML = `<img src="${sessionStorage.IMG_LOGO}" alt="">`;
+    var idUsuario = sessionStorage.ID_USUARIO;
+    var t1 = '';
+
+    function times() {
+        fetch(`/usuarios/listarTimes`)
+            .then(resposta => {
+
+                if (resposta.ok) {
+                    resposta.json().then(resposta => {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        t1 = JSON.stringify(resposta[0].nomeTime)
+                        grafico()
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
+            });
+
+    }
+
+    function grafico(){
+        var time1 = t1.replace(/"/g, "");
+        alert(time1)
+        const labels = [
+            `${time1}`,
+            'INTZ',
+            'FLA',
+        ];
+
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'Time',
+                backgroundColor: 'rgb(123, 23, 125)',
+                borderColor: 'rgb(255, 255, 255)',
+                data: [21, 22, 19],
+            }]
+        };
+
+        const config = {
+            type: 'bar',
+            data: data,
+            options: {}
+        };
+        const bar = new Chart(
+            document.getElementById('graficoTimes'),
+            config
+        );
+    }
+</script>
