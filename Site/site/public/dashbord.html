@@ -28,7 +28,7 @@
             <div class="container_dados_fundo">
                 <div class="container_info_usuario">
                     <div class="container_info_time">
-                        <img onclick="window.location.href='./dados.html'" src="./assets/img/voltar_login.png">
+                        <img style="cursor: pointer;" onclick="window.location.href='./dados.html'" src="./assets/img/voltar_branco.png">
                         <div id="img"></div>
                         <h4 id="sigla"></h4>
                     </div>
@@ -41,11 +41,12 @@
                 <div class="container_banner">
                     <canvas class="graficos" id="graficoTimes"></canvas>
                 </div>
-                <button onclick="test()">a</button>
             </div>
         </div>
     </main>
 </body>
+
+
 
 </html>
 
@@ -54,9 +55,56 @@
 nome.innerHTML = sessionStorage.NOME_USUARIO;
 moeda.innerHTML = sessionStorage.MOEDA;
     sigla.innerHTML = sessionStorage.SIGLA_TIME;
-    img.innerHTML = `<img src="${sessionStorage.IMG_LOGO}" alt="">`;
+    img.innerHTML = `<img src="./assets/img/${sessionStorage.IMG_LOGO}" alt="${sessionStorage.SIGLA_TIME}">`;
     var idUsuario = sessionStorage.ID_USUARIO;
     var t1 = '';
+    var t2 = '';
+    var t3 = '';
+    var t4 = '';
+    var t5 = '';
+    var t6 = '';
+    var t7 = '';
+    var t8 = '';
+    var t9 = '';
+    var t10 = '';
+    var q1 = '';
+    var q2 = '';
+    var q3 = '';
+    var q4 = '';
+    var q5 = '';
+    var q6 = '';
+    var q7 = '';
+    var q8 = '';
+    var q9 = '';
+    var q10 = '';
+
+    function qTimes(){
+        fetch(`/usuarios/qtdTime`)
+            .then(resposta => {
+
+                if (resposta.ok) {
+                    resposta.json().then(resposta => {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        q1 = JSON.stringify(resposta[0].smT);
+                        q2 = JSON.stringify(resposta[1].smT)
+                        q3 = JSON.stringify(resposta[2].smT)
+                        q4 = JSON.stringify(resposta[3].smT)
+                        q5 = JSON.stringify(resposta[4].smT)
+                        q6 = JSON.stringify(resposta[5].smT)
+                        q7 = JSON.stringify(resposta[6].smT)
+                        q8 = JSON.stringify(resposta[7].smT)
+                        q9 = JSON.stringify(resposta[8].smT)
+                        q10 = JSON.stringify(resposta[9].smT)
+                        grafico()
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
+            });
+    }
 
     function times() {
         fetch(`/usuarios/listarTimes`)
@@ -65,8 +113,17 @@ moeda.innerHTML = sessionStorage.MOEDA;
                 if (resposta.ok) {
                     resposta.json().then(resposta => {
                         console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                        t1 = JSON.stringify(resposta[0].nomeTime)
-                        grafico()
+                        t1 = JSON.stringify(resposta[0].nomeTime);
+                        t2 = JSON.stringify(resposta[1].nomeTime)
+                        t3 = JSON.stringify(resposta[2].nomeTime)
+                        t4 = JSON.stringify(resposta[3].nomeTime)
+                        t5 = JSON.stringify(resposta[4].nomeTime)
+                        t6 = JSON.stringify(resposta[5].nomeTime)
+                        t7 = JSON.stringify(resposta[6].nomeTime)
+                        t8 = JSON.stringify(resposta[7].nomeTime)
+                        t9 = JSON.stringify(resposta[8].nomeTime)
+                        t10 = JSON.stringify(resposta[9].nomeTime)
+                        qTimes();
                     });
                 } else {
                     console.error('Nenhum dado encontrado ou erro na API');
@@ -78,22 +135,49 @@ moeda.innerHTML = sessionStorage.MOEDA;
 
     }
 
+
     function grafico(){
         var time1 = t1.replace(/"/g, "");
-        alert(time1)
+        var time2 = t2.replace(/"/g, "");
+        var time3 = t3.replace(/"/g, "");
+        var time4 = t4.replace(/"/g, "");
+        var time5 = t5.replace(/"/g, "");
+        var time6 = t6.replace(/"/g, "");
+        var time7 = t7.replace(/"/g, "");
+        var time8 = t8.replace(/"/g, "");
+        var time9 = t9.replace(/"/g, "");
+        var time10 = t10.replace(/"/g, "");
+        var qtdtime1 = q1.replace(/"/g, "");
+        var qtdtime2 = q2.replace(/"/g, "");
+        var qtdtime3 = q3.replace(/"/g, "");
+        var qtdtime4 = q4.replace(/"/g, "");
+        var qtdtime5 = q5.replace(/"/g, "");
+        var qtdtime6 = q6.replace(/"/g, "");
+        var qtdtime7 = q7.replace(/"/g, "");
+        var qtdtime8 = q8.replace(/"/g, "");
+        var qtdtime9 = q9.replace(/"/g, "");
+        var qtdtime10 = q10.replace(/"/g, "");
+
         const labels = [
             `${time1}`,
-            'INTZ',
-            'FLA',
+            `${time2}`,
+            `${time3}`,
+            `${time4}`,
+            `${time5}`,
+            `${time6}`,
+            `${time7}`,
+            `${time8}`,
+            `${time9}`,
+            `${time10}`,
         ];
 
         const data = {
             labels: labels,
             datasets: [{
-                label: 'Time',
+                label: 'Quatidade de Torcedores',
                 backgroundColor: 'rgb(123, 23, 125)',
-                borderColor: 'rgb(255, 255, 255)',
-                data: [21, 22, 19],
+                borderColor: '#FFF',
+                data: [qtdtime1, qtdtime2, qtdtime3, qtdtime4, qtdtime5, qtdtime6, qtdtime7, qtdtime8, qtdtime9, qtdtime10],
             }]
         };
 

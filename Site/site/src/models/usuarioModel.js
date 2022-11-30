@@ -3,7 +3,16 @@ var database = require("../database/config")
 function listarVotos() {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarVotos()");
     var instrucao = `
-    select sum(votoTime1) as a,sum(votoTime2) as b from voto where fkPartida = 1;
+    select ifnull(sum(votoTime1),0) as a , ifnull(sum(votoTime2),0) as b from voto where fkPartida = 1;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function qtdTime() {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function qtdTime()");
+    var instrucao = `
+    select ifnull(count(fkTime),0) as smT from usuario right join time on fkTime = idTime group by idTime;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -69,4 +78,5 @@ module.exports = {
     listarVotos,
     listarTimes,
     atualizarVoto,
+    qtdTime,
 };

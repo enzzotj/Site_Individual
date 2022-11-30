@@ -48,3 +48,19 @@ CREATE TABLE voto(
     votoTime2 TINYINT,
     PRIMARY KEY(fkUsuario, fkPartida)
 );
+
+insert into time(nomeTime, siglaTime, caminhoImgLogo) values 
+('Loud', 'LLL', 'LOUD_logo.png'),
+('Pain', 'PNG', 'logo_pain.png'),
+('Red', 'RED', 'RED_logo.png'),
+('Intz', 'ITZ', 'INTZ_Logo.png'),
+('Flamengo', 'FLA', 'flamengo-esports-logo.webp'),
+('Rensga', 'RNS', 'Rensga_Esportslogo_square.webp'),
+('Kabum', 'KBM', 'Kabum.png'),
+('Libert', 'LBR', 'libert.png'),
+('Furia', 'FUR', 'Furia_Esports_logo.png'),
+('Netshoes Miners', 'NMG', 'Netshoes_Minerslogo_square.webp');
+
+insert into campeonato(nomeCampeonato) values('CBLOL');
+
+insert into partida(fase, dataPartida, fkTime1, fkTime2, fkCampeonato) values('1 fase', '2022-11-22 16:00', 1, 2, 1);

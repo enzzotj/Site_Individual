@@ -10,6 +10,9 @@ router.get("/", function (req, res) {
 router.get("/listar", function (req, res) {
     usuarioController.listar(req, res);
 });
+router.get("/qtdTime", function (req, res) {
+    usuarioController.qtdTime(req, res);
+});
 
 router.get("/listarVotos", function (req, res) {
     usuarioController.listarVotos(req, res);

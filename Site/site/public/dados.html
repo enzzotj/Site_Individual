@@ -48,27 +48,25 @@
                         <div class="proximos_jogos_home">
                             <div class="proximos_jogos_home_time">
 
-                                <h3>ITZ</h3>
+                                <h3>LLL</h3>
                                 <div class="dados_votos">
                                     <span id="time1" class="placar_votos">0</span>
-                                    <img src="./assets/img/INTZ_Logo.png" alt="INTZ">
+                                    <img src="./assets/img/LOUD_logo.png" alt="INTZ">
                                 </div>
                                 <h4>VS</h4>
                                 <div class="dados_votos">
                                     <span id="time2" class="placar_votos">0</span>
-                                    <img src="./assets/img/flamengo-esports-logo.webp" alt="Flamengo">
+                                    <img src="./assets/img/logo_pain.png" alt="Flamengo">
                                 </div>
-                                <h3 style="justify-content:flex-end ;">FLA</h3>
+                                <h3 style="justify-content:flex-end ;">PNG</h3>
                             </div>
                             <div class="proximos_jogos_home_quando">
                                 <p>CBLOL</p>
-                                <p style="justify-content: center;">17:30</p>
-                                <p style="justify-content:flex-end;">28/11/22</p>
+                                <p style="justify-content: center;">16:00</p>
+                                <p style="justify-content:flex-end;">22/11/2022</p>
                             </div>
                         </div>
                         <div id="botaoVotar" style="display: flex; justify-content: space-between; width: 100%;">
-                            <button onclick="cadastrarVoto1()" class="button_votar">ITZ</button>
-            <button onclick="cadastrarVoto2()" class="button_votar">FLA</button>
                         </div>
                     </div>
                     <div class="banner_dados">
@@ -111,18 +109,24 @@
     nome.innerHTML = sessionStorage.NOME_USUARIO;
     moeda.innerHTML = sessionStorage.MOEDA;
     sigla.innerHTML = sessionStorage.SIGLA_TIME;
-    img.innerHTML = `<img src="${sessionStorage.IMG_LOGO}" alt="">`;
+    img.innerHTML = `<img src="./assets/img/${sessionStorage.IMG_LOGO}" alt="${sessionStorage.SIGLA_TIME}">`;
     var idPartida = 1;
     var idUsuario = sessionStorage.ID_USUARIO;
     var pergunta = sessionStorage.PERGUNTA;
     var voto = sessionStorage.VOTO;
+    var vt = 0;
 
     function verificarVotoPergunta() {
-        if (voto == 1) {
+        if (voto == 1 || vt == 1) {
+            botaoVotar.style.display = "none"
             botaoVotar.innerHTML = '';
+        } else{
+            botaoVotar.innerHTML = `<button style="display: block;" onclick="cadastrarVoto1()" class="button_votar">ITZ</button>
+            <button style="display: block;" onclick="cadastrarVoto2()" class="button_votar">FLA</button>`;
         }
         if (pergunta == 1) {
             botaoPergunta.innerHTML = '';
+            
         }
     }
 
@@ -151,13 +155,14 @@
 
     function cadastrarVoto1() {
         alert(`Parabens você votou na Vitoria da INTZ`)
+        vt = 1;
 
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
         var idUsuarioVar = idUsuario;
         var votoTime1Var = 1;
         var votoTime2Var = 0;
-
+        
         if (idUsuarioVar == "") {
             alert("Erro preencha todos os campos em branco");
             return false;
@@ -183,9 +188,7 @@
 
             if (resposta.ok) {
                 atualizarVt();
-                setTimeout(() => {
-                    window.location = "./dados.html";
-                }, "1000")
+                
 
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
@@ -254,7 +257,7 @@
         }).then(function (resposta) {
 
             if (resposta.ok) {
-                window.location = "./dados.html";
+                
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {
