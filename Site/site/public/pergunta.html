@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPlayers | Dados</title>
+    <link rel="stylesheet" href="./css/componentes.css">
+    <link rel="stylesheet" href="./css/dados.css">
+</head>
+
+<body onload=" atualizarVoto(), verificarVotoPergunta()">
+    <header>
+        <div class="container_header">
+            <div class="container">
+                <div class="container_img_logo">
+                    <img style="cursor:default;" src="./assets/icon/logoHome.png" alt="Logo">
+                </div>
+                <img class="img_sair" src="./assets/img/logof.png" onclick="window.location.href='./index.html'"></img>
+            </div>
+    </header>
+
+    <main>
+        <div class="container_dados">
+            <img class="img_usuario" src="./assets/img/masterIcon.png" alt="">
+            <div class="container_dados_fundo">
+                <div class="container_info_usuario">
+                    <div class="container_info_time">
+                        <div id="img"></div>
+                        <h4 id="sigla"></h4>
+                    </div>
+                    <h4 id="nome" style="margin-top: 10px; width: 200px; text-align: center;"></h4>
+                    <div class="container_info_moeda">
+                        <img src="./assets/img/Desenho-Moedas-Dinheiro-Bitcoin-PNG.png" alt="">
+                        <span id="moeda">0</span>
+                    </div>
+                </div>
+                <div id="banner" class="container_banner">
+                    <div class="container_pergunta" id="pg">
+                        <h2>1.Qual e a Lane mais Popular</h2>
+                        <img src="./assets/img/Mapa.jpg" alt="">
+                        <div class="container_button_pg">
+                            <button onclick="errada()">Top</button>
+                            <button onclick="errada()">Jugle</button>
+                            <button onclick="certa()">Mid</button>
+                            <button onclick="errada()">Adc</button>
+                            <button onclick="errada()">Sup</button>
+                        </div>
+                    </div>
+                    
+                </div>
+
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
+
+<script>
+
+    nome.innerHTML = sessionStorage.NOME_USUARIO;
+    moeda.innerHTML = sessionStorage.MOEDA;
+    sigla.innerHTML = sessionStorage.SIGLA_TIME;
+    img.innerHTML = `<img src="./assets/img/${sessionStorage.IMG_LOGO}" alt="${sessionStorage.SIGLA_TIME}">`;
+    var idUsuario = sessionStorage.ID_USUARIO;
+    var pergunta = sessionStorage.PERGUNTA;
+
+    var lista_pg = [`<div class="container_pergunta" id="pg">
+                        <h2>2.Qual e o Campeão mais popular atualmente?</h2>
+                        <img src="./assets/img/lol-campeoes-2022.jpg" alt="">
+                        <div class="container_button_pg">
+                            <button onclick="errada()">Zed</button>
+                            <button onclick="certa()">Kai'sa</button>
+                            <button onclick="errada()">Yasuo</button>
+                            <button onclick="errada()">Lux</button>
+                            <button onclick="errada()">Ezreal</button>
+                        </div>
+                    </div>`,
+                    `<div class="container_pergunta" id="pg">
+                        <h2>3.Qual e o Campeão mais banido atualmente?</h2>
+                        <img src="./assets/img/Mapa.jpg" alt="">
+                        <div class="container_button_pg">
+                            <button onclick="errada()">Yasuo</button>
+                            <button onclick="errada()">Darius</button>
+                            <button onclick="certa()">Master Yi</button>
+                            <button onclick="errada()">Irelia</button>
+                            <button onclick="errada()">Zed</button>
+                        </div>
+                    </div>`,
+                    `<div class="container_pergunta" id="pg">
+                        <h2>4.Qual e o Campeão mais banido atualmente?</h2>
+                        <img src="./assets/img/Mapa.jpg" alt="">
+                        <div class="container_button_pg">
+                            <button onclick="errada()">Yasuo</button>
+                            <button onclick="errada()">Darius</button>
+                            <button onclick="errada()">Master Yi</button>
+                            <button onclick="errada()">Irelia</button>
+                            <button onclick="certa()">Zed</button>
+                        </div>
+                    </div>`];
+    var qtd_pg = 0;
+    var add_moeda = 0;
+    var qtd_certa = 0;
+
+    function errada(){
+        qtd_pg++;
+        alert(`Errada Resposta ;(`)
+        if(qtd_pg <= 5){
+            banner.innerHTML = lista_pg[qtd_pg - 1]
+        }
+    }
+
+    function certa(){
+        qtd_pg++;
+        qtd_certa++;
+        add_moeda += 150;
+        lista_pg[qtd_pg];
+        alert(`Certa Resposta ;)`)
+        if(qtd_pg <= 5){
+            banner.innerHTML = lista_pg[qtd_pg - 1]
+        }
+    }
+
+
+
+</script>

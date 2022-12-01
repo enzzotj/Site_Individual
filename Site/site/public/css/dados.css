@@ -198,3 +198,40 @@ header .img_sair{
   height: 50vh !important;
   width: 100%;
 }
+
+.container_pergunta{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.container_pergunta h2{
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.5em;
+}
+
+.container_pergunta img{
+  height: 35vh;
+}
+
+.container_pergunta button{
+  height: 5vh;
+  width: 8vw;
+  border-style: none;
+  border-radius: 4px;
+  background-color: #7A177C;
+  color: #fff;
+  cursor: pointer;
+}
+
+.container_pergunta button:hover{
+  background-color: #5E1460;
+  transition: 0.3s all;
+}
+
+.container_button_pg{
+  display: flex;
+  width: 55vw;
+  justify-content: space-between;
+}

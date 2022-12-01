@@ -36,7 +36,7 @@
                         <span id="moeda">0</span>
                     </div>
                 </div>
-                <div class="container_banner">
+                <div id="banner" class="container_banner">
                     <div class="banner_dados">
                         <div class="text_conteudo">
 
@@ -91,7 +91,7 @@
                         <img style="height: 14vh;" src="./assets/img/quest.png" alt="">
                         <div id="botaoPergunta">
 
-                            <button onclick="" class="button_votar">QUESTION</button>
+                            <button onclick="pergunta()" class="button_votar">QUESTION</button>
                         </div>
                     </div>
                 </div>
@@ -116,14 +116,18 @@
     var voto = sessionStorage.VOTO;
     var vt = 0;
 
+    function pergunta(){
+        banner.innerHTML = ""
+    }
+
     function verificarVotoPergunta() {
         if (voto == 1 || vt == 1) {
-            botaoVotar.style.display = "none"
             botaoVotar.innerHTML = '';
-        } else{
-            botaoVotar.innerHTML = `<button style="display: block;" onclick="cadastrarVoto1()" class="button_votar">ITZ</button>
-            <button style="display: block;" onclick="cadastrarVoto2()" class="button_votar">FLA</button>`;
+        }else{
+            botaoVotar.innerHTML = `<button style="display: block;" onclick="cadastrarVoto1()" class="button_votar">LLL</button>
+            <button style="display: block;" onclick="cadastrarVoto2()" class="button_votar">PNG</button>`;
         }
+        
         if (pergunta == 1) {
             botaoPergunta.innerHTML = '';
             
@@ -154,7 +158,7 @@
     }
 
     function cadastrarVoto1() {
-        alert(`Parabens você votou na Vitoria da INTZ`)
+        alert(`Parabens você votou na Vitoria da Loud`)
         vt = 1;
 
         //Recupere o valor da nova input pelo nome do id
@@ -188,7 +192,9 @@
 
             if (resposta.ok) {
                 atualizarVt();
-                
+                setTimeout(() => {
+                    window.location = "./dados.html";
+                }, "1000")
 
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
@@ -201,7 +207,7 @@
     }
 
     function cadastrarVoto2() {
-        alert(`Parabens você votou na Vitoria do Flamengo`)
+        alert(`Parabens você votou na Vitoria da Pain`)
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
         var idUsuarioVar = sessionStorage.ID_USUARIO;
