@@ -91,7 +91,7 @@
                         <img style="height: 14vh;" src="./assets/img/quest.png" alt="">
                         <div id="botaoPergunta">
 
-                            <button onclick="pergunta()" class="button_votar">QUESTION</button>
+                            <button onclick="window.location.href='./pergunta.html'" class="button_votar">QUESTION</button>
                         </div>
                     </div>
                 </div>
@@ -116,10 +116,6 @@
     var voto = sessionStorage.VOTO;
     var vt = 0;
 
-    function pergunta(){
-        banner.innerHTML = ""
-    }
-
     function verificarVotoPergunta() {
         if (voto == 1 || vt == 1) {
             botaoVotar.innerHTML = '';
@@ -127,7 +123,7 @@
             botaoVotar.innerHTML = `<button style="display: block;" onclick="cadastrarVoto1()" class="button_votar">LLL</button>
             <button style="display: block;" onclick="cadastrarVoto2()" class="button_votar">PNG</button>`;
         }
-        
+
         if (pergunta == 1) {
             botaoPergunta.innerHTML = '';
             

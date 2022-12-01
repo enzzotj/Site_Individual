@@ -39,4 +39,12 @@ router.put("/atualizarVoto/:idUsuario", function (req, res) {
     usuarioController.atualizarVoto(req, res);
 });
 
+router.put("/atualizarPergunta/:idUsuario", function (req, res) {
+    usuarioController.atualizarPergunta(req, res);
+});
+
+router.put("/moedaAtt/:idUsuario", function (req, res) {
+    usuarioController.moedaAtt(req, res);
+});
+
 module.exports = router;

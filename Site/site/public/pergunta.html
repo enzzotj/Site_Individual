@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./css/dados.css">
 </head>
 
-<body onload=" atualizarVoto(), verificarVotoPergunta()">
+<body>
     <header>
         <div class="container_header">
             <div class="container">
@@ -27,6 +27,8 @@
             <div class="container_dados_fundo">
                 <div class="container_info_usuario">
                     <div class="container_info_time">
+                        <img style="cursor: pointer;" onclick="window.location.href='./dados.html'"
+                            src="./assets/img/voltar_branco.png">
                         <div id="img"></div>
                         <h4 id="sigla"></h4>
                     </div>
@@ -38,20 +40,20 @@
                 </div>
                 <div id="banner" class="container_banner">
                     <div class="container_pergunta" id="pg">
-                        <h2>1.Qual e a Lane mais Popular</h2>
-                        <img src="./assets/img/Mapa.jpg" alt="">
-                        <div class="container_button_pg">
-                            <button onclick="errada()">Top</button>
-                            <button onclick="errada()">Jugle</button>
-                            <button onclick="certa()">Mid</button>
-                            <button onclick="errada()">Adc</button>
-                            <button onclick="errada()">Sup</button>
-                        </div>
+                    <h2>1.Qual e a Lane mais Popular?</h2>
+                    <img src="./assets/img/Mapa.jpg" alt="">
+                    <div class="container_button_pg">
+                        <button onclick="errada()">Top</button>
+                        <button onclick="errada()">Jugle</button>
+                        <button onclick="certa()">Mid</button>
+                        <button onclick="errada()">Adc</button>
+                        <button onclick="errada()">Sup</button>
                     </div>
-                    
                 </div>
 
             </div>
+
+        </div>
         </div>
     </main>
 </body>
@@ -78,19 +80,8 @@
                             <button onclick="errada()">Ezreal</button>
                         </div>
                     </div>`,
-                    `<div class="container_pergunta" id="pg">
+        `<div class="container_pergunta" id="pg">
                         <h2>3.Qual e o Campeão mais banido atualmente?</h2>
-                        <img src="./assets/img/Mapa.jpg" alt="">
-                        <div class="container_button_pg">
-                            <button onclick="errada()">Yasuo</button>
-                            <button onclick="errada()">Darius</button>
-                            <button onclick="certa()">Master Yi</button>
-                            <button onclick="errada()">Irelia</button>
-                            <button onclick="errada()">Zed</button>
-                        </div>
-                    </div>`,
-                    `<div class="container_pergunta" id="pg">
-                        <h2>4.Qual e o Campeão mais banido atualmente?</h2>
                         <img src="./assets/img/Mapa.jpg" alt="">
                         <div class="container_button_pg">
                             <button onclick="errada()">Yasuo</button>
@@ -99,30 +90,151 @@
                             <button onclick="errada()">Irelia</button>
                             <button onclick="certa()">Zed</button>
                         </div>
-                    </div>`];
+                    </div>`,
+        `<div class="container_pergunta" id="pg">
+                        <h2>4.Qual e o Região que Master Yi nasceu?</h2>
+                        <img src="./assets/img/ContinenteRuneterra.webp" alt="">
+                        <div class="container_button_pg">
+                            <button onclick="errada()">Demacia</button>
+                            <button onclick="certa()">Ionia</button>
+                            <button onclick="errada()">Freljord</button>
+                            <button onclick="errada()">Águas de Sentina</button>
+                            <button onclick="errada()">Noxus</button>
+                        </div>
+                    </div>`,
+        `<div class="container_pergunta" id="pg">
+                        <h2>5. Qual foi o ultimo vencedor do Mundial de LOL?</h2>
+                        <img src="./assets/img/ContinenteRuneterra.webp" alt="">
+                        <div class="container_button_pg">
+                            <button onclick="errada()">T1</button>
+                            <button onclick="errada()">Loud</button>
+                            <button onclick="errada()">DWG KIA</button>
+                            <button onclick="certa()">DRX</button>
+                            <button onclick="errada()">JD Gaming</button>
+                        </div>
+                    </div>`,];
     var qtd_pg = 0;
     var add_moeda = 0;
     var qtd_certa = 0;
 
-    function errada(){
+    function errada() {
+
         qtd_pg++;
         alert(`Errada Resposta ;(`)
-        if(qtd_pg <= 5){
+        if (qtd_pg < 5) {
+            banner.innerHTML = lista_pg[qtd_pg - 1]
+        } else {
+            atualizarSaldo();
+            if(qtd_certa <= 1){
+                lista_pg.push(`<div style="display: flex; align-items: center;">
+                            <img style="height: 40vh;" src="./assets/img/amumu.webp" alt="">
+                            <div class="pg_final">
+                                <p>Parabéns você acertou ${qtd_certa} de ${qtd_pg} perguntas e ganhou ${add_moeda} moedas.</p>
+                                <button onclick="window.location.href='./dados.html'">Voltar</button>
+                            </div>
+                        </div>`)
+
+            }else if(qtd_certa <= 4){
+                lista_pg.push(`<div style="display: flex; align-items: center;">
+                        <img style="height: 40vh;" src="./assets/img/rammus__okay__by_ieket_dcde5qi-fullview.png" alt="">
+                        <div class="pg_final">
+                            <p>Parabéns você acertou ${qtd_certa} de ${qtd_pg} perguntas e ganhou ${add_moeda} moedas.</p>
+                            <button onclick="window.location.href='./dados.html'">Voltar</button>
+                        </div>
+                    </div>`)
+            }else{
+                lista_pg.push(`<div style="display: flex; align-items: center;">
+                        <img style="height: 40vh;" src="./assets/img/katarina.png" alt="">
+                        <div class="pg_final">
+                            <p>Parabéns você acertou ${qtd_certa} de ${qtd_pg} perguntas e ganhou ${add_moeda} moedas.</p>
+                            <button onclick="window.location.href='./dados.html'">Voltar</button>
+                        </div>
+                    </div>`)
+            }
             banner.innerHTML = lista_pg[qtd_pg - 1]
         }
     }
 
-    function certa(){
+    function certa() {
         qtd_pg++;
         qtd_certa++;
         add_moeda += 150;
         lista_pg[qtd_pg];
         alert(`Certa Resposta ;)`)
-        if(qtd_pg <= 5){
+        if (qtd_pg < 5) {
             banner.innerHTML = lista_pg[qtd_pg - 1]
+        } else {
+            atualizarSaldo();
+            if(qtd_certa <= 1){
+                lista_pg.push(`<div style="display: flex; align-items: center;">
+                            <img style="height: 40vh;" src="./assets/img/amumu.webp" alt="">
+                            <div class="pg_final">
+                                <p>Parabéns você acertou ${qtd_certa} de ${qtd_pg} perguntas e ganhou ${add_moeda} moedas.</p>
+                                <button onclick="window.location.href='./dados.html'">Voltar</button>
+                            </div>
+                        </div>`)
+
+            }else if(qtd_certa <= 4){
+                lista_pg.push(`<div style="display: flex; align-items: center;">
+                        <img style="height: 40vh;" src="./assets/img/rammus__okay__by_ieket_dcde5qi-fullview.png" alt="">
+                        <div class="pg_final">
+                            <p>Parabéns você acertou ${qtd_certa} de ${qtd_pg} perguntas e ganhou ${add_moeda} moedas.</p>
+                            <button onclick="window.location.href='./dados.html'">Voltar</button>
+                        </div>
+                    </div>`)
+            }else{
+                lista_pg.push(`<div style="display: flex; align-items: center;">
+                        <img style="height: 40vh;" src="./assets/img/katarina.png" alt="">
+                        <div class="pg_final">
+                            <p>Parabéns você acertou ${qtd_certa} de ${qtd_pg} perguntas e ganhou ${add_moeda} moedas.</p>
+                            <button onclick="window.location.href='./dados.html'">Voltar</button>
+                        </div>
+                    </div>`)
+            }
+            banner.innerHTML = lista_pg[qtd_pg - 1]  
         }
     }
 
+    function atualizarSaldo(moeda){
+        fetch(`/usuarios/moedaAtt/${idUsuario}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },body: JSON.stringify({
+                moedaServer: add_moeda
+            })
+        }).then(function (resposta) {
 
+            if (resposta.ok) {
+                atualizarPergunta()
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+
+    function atualizarPergunta() {
+        fetch(`/usuarios/atualizarPergunta/${idUsuario}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
 
 </script>

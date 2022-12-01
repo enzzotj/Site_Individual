@@ -198,6 +198,45 @@ function atualizarVoto(req, res) {
 
 }
 
+function atualizarPergunta(req, res) {
+    var idUsuario = req.params.idUsuario;
+
+    usuarioModel.atualizarPergunta(idUsuario)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        )
+        .catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+
+}
+
+function moedaAtt(req, res) {
+    var moeda = req.body.moedaServer;
+    var idUsuario = req.params.idUsuario;
+
+    usuarioModel.moedaAtt(moeda, idUsuario)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        )
+        .catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+
+}
+
 module.exports = {
     entrar,
     cadastrar,
@@ -206,5 +245,7 @@ module.exports = {
     listarTimes,
     atualizarVoto,
     qtdTime,
+    atualizarPergunta,
+    moedaAtt,
     testar,
 }

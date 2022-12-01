@@ -71,6 +71,24 @@ function atualizarVoto(idUsuario) {
     return database.executar(instrucao);
 }
 
+function atualizarPergunta(idUsuario) {
+    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function atualizarPergunta(): ", idUsuario);
+    var instrucao = `
+        UPDATE usuario SET moeda = '1' WHERE idUsuario = ${idUsuario};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function moedaAtt(moeda, idUsuario) {
+    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function moedaAtt(): ", moeda, idUsuario);
+    var instrucao = `
+        UPDATE usuario SET moeda = ${moeda} WHERE idUsuario = ${idUsuario};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     entrar,
     cadastrar,
@@ -79,4 +97,6 @@ module.exports = {
     listarTimes,
     atualizarVoto,
     qtdTime,
+    atualizarPergunta,
+    moedaAtt,
 };
