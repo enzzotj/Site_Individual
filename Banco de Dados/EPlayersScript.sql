@@ -13,9 +13,20 @@ CREATE TABLE usuario(
     nome VARCHAR(45),
     email VARCHAR(45),
     senha VARCHAR(45),
+    pergunta TINYINT,
+    voto TINYINT,
+	moeda INT,
     fkTime INT,
     FOREIGN KEY (fkTime) REFERENCES time(idTime),
 	PRIMARY KEY(idUsuario, fkTime)
+);
+
+CREATE TABLE nickName(
+	idNick INT auto_increment,
+	nick VARCHAR(45),
+    tag CHAR(4),
+    fkUsuario INT,
+    PRIMARY KEY(idNick, fkUsuario)
 );
 
 CREATE TABLE campeonato(
@@ -35,6 +46,7 @@ CREATE TABLE partida(
     FOREIGN KEY (fkCampeonato) REFERENCES campeonato(idCampeonato),
     PRIMARY  KEY(idPartida, fkTime1, fkTime2, fkCampeonato)
 );
+ select nomeCampeonato, tm1.siglaTime tm1S, tm2.siglaTime tm2S, tm1.caminhoImgLogo tm1F, tm2.caminhoImgLogo tm2F, dataPartida from partida p join time tm1 on tm1.idTime = p.fkTime1 join time tm2 on tm2.idTime = p.fkTime2 join campeonato on idCampeonato = p.fkCampeonato where idPartida = 1;
 
 CREATE TABLE voto(
 	fkUsuario INT,
@@ -45,3 +57,19 @@ CREATE TABLE voto(
     votoTime2 TINYINT,
     PRIMARY KEY(fkUsuario, fkPartida)
 );
+
+insert into time(nomeTime, siglaTime, caminhoImgLogo) values 
+('Loud', 'LLL', 'LOUD_logo.png'),
+('Pain', 'PNG', 'logo_pain.png'),
+('Red', 'RED', 'RED_logo.png'),
+('Intz', 'ITZ', 'INTZ_Logo.png'),
+('Flamengo', 'FLA', 'flamengo-esports-logo.webp'),
+('Rensga', 'RNS', 'Rensga_Esportslogo_square.webp'),
+('Kabum', 'KBM', 'Kabum.png'),
+('Libert', 'LBR', 'libert.png'),
+('Furia', 'FUR', 'Furia_Esports_logo.png'),
+('Netshoes Miners', 'NMG', 'Netshoes_Minerslogo_square.webp');
+
+insert into campeonato(nomeCampeonato) values('CBLOL');
+
+insert into partida(fase, dataPartida, fkTime1, fkTime2, fkCampeonato) values('1 fase', '2022-11-22 16:00', 1, 2, 1);

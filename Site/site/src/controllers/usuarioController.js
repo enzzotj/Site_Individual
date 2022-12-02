@@ -25,6 +25,42 @@ function qtdTime(req, res) {
         );
 }
 
+function listarUsuario(req, res) {
+    var idUsuario = req.params.idUsuario;
+    usuarioModel.listarUsuario(idUsuario)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function listarPartida(req, res) {
+
+    usuarioModel.listarPartida()
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 function listarVotos(req, res) {
 
     usuarioModel.listarVotos()
@@ -218,7 +254,7 @@ function atualizarPergunta(req, res) {
 }
 
 function moedaAtt(req, res) {
-    var moeda = req.body.moedaServer;
+    var moeda = req.body.mdServer;
     var idUsuario = req.params.idUsuario;
 
     usuarioModel.moedaAtt(moeda, idUsuario)
@@ -242,10 +278,12 @@ module.exports = {
     cadastrar,
     cadastraVoto,
     listarVotos,
+    listarPartida,
     listarTimes,
     atualizarVoto,
     qtdTime,
     atualizarPergunta,
     moedaAtt,
+    listarUsuario,
     testar,
 }

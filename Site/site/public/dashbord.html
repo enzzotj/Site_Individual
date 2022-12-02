@@ -11,7 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body onload="times()">
+<body onload="times(), ltUser()">
     <header>
         <div class="container_header">
             <div class="container">
@@ -52,8 +52,39 @@
 
 <script>
 
-nome.innerHTML = sessionStorage.NOME_USUARIO;
-moeda.innerHTML = sessionStorage.MOEDA;
+    nome.innerHTML = sessionStorage.NOME_USUARIO;
+    sigla.innerHTML = sessionStorage.SIGLA_TIME;
+    img.innerHTML = `<img src="./assets/img/${sessionStorage.IMG_LOGO}" alt="${sessionStorage.SIGLA_TIME}">`;
+    var idPartida = 1;
+    var idUsuario = sessionStorage.ID_USUARIO;
+    var pergunta = 0;
+    var voto = 0;
+
+
+    function ltUser() {
+        fetch(`/usuarios/listarUsuario/${idUsuario}`)
+            .then(resposta => {
+
+                if (resposta.ok) {
+                    resposta.json().then(resposta => {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        var pg = JSON.stringify(resposta[0].pergunta);
+                        var vt = JSON.stringify(resposta[0].voto);
+                        var md = JSON.stringify(resposta[0].moeda);
+                        moeda.innerHTML = md.replace(/"/g, "");
+                        pergunta = pg.replace(/"/g, "");
+                        voto = vt.replace(/"/g, "");
+
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
+            });
+
+    }
     sigla.innerHTML = sessionStorage.SIGLA_TIME;
     img.innerHTML = `<img src="./assets/img/${sessionStorage.IMG_LOGO}" alt="${sessionStorage.SIGLA_TIME}">`;
     var idUsuario = sessionStorage.ID_USUARIO;

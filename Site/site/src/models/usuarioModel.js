@@ -1,5 +1,23 @@
 var database = require("../database/config")
 
+function listarPartida() {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarPartida()");
+    var instrucao = `
+    select nomeCampeonato, tm1.siglaTime tm1S, tm2.siglaTime tm2S, tm1.caminhoImgLogo tm1F, tm2.caminhoImgLogo tm2F, dataPartida from partida p join time tm1 on tm1.idTime = p.fkTime1 join time tm2 on tm2.idTime = p.fkTime2 join campeonato on idCampeonato = p.fkCampeonato where idPartida = 1;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function listarUsuario(idUsuario) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarUsuario()", idUsuario);
+    var instrucao = `
+    select * from usuario where idUsuario = ${idUsuario};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 function listarVotos() {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarVotos()");
     var instrucao = `
@@ -74,7 +92,7 @@ function atualizarVoto(idUsuario) {
 function atualizarPergunta(idUsuario) {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function atualizarPergunta(): ", idUsuario);
     var instrucao = `
-        UPDATE usuario SET moeda = '1' WHERE idUsuario = ${idUsuario};
+        UPDATE usuario SET pergunta = '1' WHERE idUsuario = ${idUsuario};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -94,7 +112,9 @@ module.exports = {
     cadastrar,
     cadastraVoto,
     listarVotos,
+    listarUsuario,
     listarTimes,
+    listarPartida,
     atualizarVoto,
     qtdTime,
     atualizarPergunta,

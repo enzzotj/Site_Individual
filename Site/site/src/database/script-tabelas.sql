@@ -21,6 +21,14 @@ CREATE TABLE usuario(
 	PRIMARY KEY(idUsuario, fkTime)
 );
 
+CREATE TABLE nickName(
+	idNick INT auto_increment,
+	nick VARCHAR(45),
+    tag CHAR(4),
+    fkUsuario INT,
+    PRIMARY KEY(idNick, fkUsuario)
+);
+
 CREATE TABLE campeonato(
 	idCampeonato INT PRIMARY KEY AUTO_INCREMENT,
     nomeCampeonato VARCHAR(45)
@@ -38,6 +46,7 @@ CREATE TABLE partida(
     FOREIGN KEY (fkCampeonato) REFERENCES campeonato(idCampeonato),
     PRIMARY  KEY(idPartida, fkTime1, fkTime2, fkCampeonato)
 );
+ select nomeCampeonato, tm1.siglaTime tm1S, tm2.siglaTime tm2S, tm1.caminhoImgLogo tm1F, tm2.caminhoImgLogo tm2F, dataPartida from partida p join time tm1 on tm1.idTime = p.fkTime1 join time tm2 on tm2.idTime = p.fkTime2 join campeonato on idCampeonato = p.fkCampeonato where idPartida = 1;
 
 CREATE TABLE voto(
 	fkUsuario INT,

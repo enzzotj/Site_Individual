@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./css/dados.css">
 </head>
 
-<body onload=" atualizarVoto(), verificarVotoPergunta()">
+<body onload=" atualizarVoto(), ltUser(), ltPrtd()">
     <header>
         <div class="container_header">
             <div class="container">
@@ -48,17 +48,17 @@
                         <div class="proximos_jogos_home">
                             <div class="proximos_jogos_home_time">
 
-                                <h3>LLL</h3>
+                                <h3 id="sigT1"></h3>
                                 <div class="dados_votos">
                                     <span id="time1" class="placar_votos">0</span>
-                                    <img src="./assets/img/LOUD_logo.png" alt="INTZ">
+                                    <img id="tm1Img" alt="">
                                 </div>
                                 <h4>VS</h4>
                                 <div class="dados_votos">
                                     <span id="time2" class="placar_votos">0</span>
-                                    <img src="./assets/img/logo_pain.png" alt="Flamengo">
+                                    <img id="tm2Img" alt="">
                                 </div>
-                                <h3 style="justify-content:flex-end ;">PNG</h3>
+                                <h3 id="sigT2" style="justify-content:flex-end ;"></h3>
                             </div>
                             <div class="proximos_jogos_home_quando">
                                 <p>CBLOL</p>
@@ -67,6 +67,8 @@
                             </div>
                         </div>
                         <div id="botaoVotar" style="display: flex; justify-content: space-between; width: 100%;">
+                            <button style="display: block;" onclick="cadastrarVoto1()" class="button_votar"><span id="sgT1"></span></button>
+                            <button style="display: block;" onclick="cadastrarVoto2()" class="button_votar"><span id="sgT2"></span></button>
                         </div>
                     </div>
                     <div class="banner_dados">
@@ -107,27 +109,77 @@
 <script>
 
     nome.innerHTML = sessionStorage.NOME_USUARIO;
-    moeda.innerHTML = sessionStorage.MOEDA;
     sigla.innerHTML = sessionStorage.SIGLA_TIME;
     img.innerHTML = `<img src="./assets/img/${sessionStorage.IMG_LOGO}" alt="${sessionStorage.SIGLA_TIME}">`;
     var idPartida = 1;
     var idUsuario = sessionStorage.ID_USUARIO;
-    var pergunta = sessionStorage.PERGUNTA;
-    var voto = sessionStorage.VOTO;
-    var vt = 0;
+    var pergunta = 0;
+    var voto = 0;
+    
 
     function verificarVotoPergunta() {
-        if (voto == 1 || vt == 1) {
+        if (voto == 1) {
             botaoVotar.innerHTML = '';
-        }else{
-            botaoVotar.innerHTML = `<button style="display: block;" onclick="cadastrarVoto1()" class="button_votar">LLL</button>
-            <button style="display: block;" onclick="cadastrarVoto2()" class="button_votar">PNG</button>`;
         }
 
         if (pergunta == 1) {
             botaoPergunta.innerHTML = '';
             
         }
+    }
+
+    function ltUser() {
+        fetch(`/usuarios/listarUsuario/${idUsuario}`)
+            .then(resposta => {
+
+                if (resposta.ok) {
+                    resposta.json().then(resposta => {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        var pg = JSON.stringify(resposta[0].pergunta);
+                        var vt = JSON.stringify(resposta[0].voto);
+                        var md = JSON.stringify(resposta[0].moeda);
+                        moeda.innerHTML = md.replace(/"/g, "");
+                        pergunta = pg.replace(/"/g, "");
+                        voto = vt.replace(/"/g, "");
+                        verificarVotoPergunta();
+
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
+            });
+
+    }
+
+    function ltPrtd() {
+        fetch(`/usuarios/listarPartida`)
+            .then(resposta => {
+
+                if (resposta.ok) {
+                    resposta.json().then(resposta => {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        var img1 = JSON.stringify(resposta[0].tm1F);
+                        var img2 = JSON.stringify(resposta[0].tm2F);
+                        var siglaPrim = JSON.stringify(resposta[0].tm1S);
+                        var siglaSeg = JSON.stringify(resposta[0].tm2S);
+                        tm1Img.src = `./assets/img/${img1.replace(/"/g, "")}`;
+                        tm2Img.src = `./assets/img/${img2.replace(/"/g, "")}`;
+                        sigT1.innerHTML = siglaPrim.replace(/"/g, "");
+                        sigT2.innerHTML = siglaSeg.replace(/"/g, "");
+                        sgT1.innerHTML = siglaPrim.replace(/"/g, "");
+                        sgT2.innerHTML = siglaSeg.replace(/"/g, "");
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
+            });
+
     }
 
     function atualizarVoto() {

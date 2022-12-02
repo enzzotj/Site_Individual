@@ -7,11 +7,15 @@ router.get("/", function (req, res) {
     usuarioController.testar(req, res);
 });
 
-router.get("/listar", function (req, res) {
-    usuarioController.listar(req, res);
+router.get("/listarUsuario/:idUsuario", function (req, res) {
+    usuarioController.listarUsuario(req, res);
 });
 router.get("/qtdTime", function (req, res) {
     usuarioController.qtdTime(req, res);
+});
+
+router.get("/listarPartida", function (req, res) {
+    usuarioController.listarPartida(req, res);
 });
 
 router.get("/listarVotos", function (req, res) {
